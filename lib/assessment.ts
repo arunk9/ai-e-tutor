@@ -72,6 +72,7 @@ export interface ClientQuestion {
   stem: string;
   options: OptionView[] | null;
   optionOrder: string[] | null; // optionOrder[i] = original key shown at display position i
+  matchingKeys: string[] | null; // Column-I labels for "matching" questions — never the mapped values
 }
 
 function stripOptionPrefix(raw: string): string {
@@ -97,6 +98,7 @@ export function sanitizeQuestion(question: Question, optionOrder: string[] | nul
     stem: question.stem,
     options,
     optionOrder: question.options ? optionOrder ?? [...OPTION_KEYS] : null,
+    matchingKeys: question.type === "matching" ? Object.keys(question.correct as Record<string, string>) : null,
   };
 }
 
