@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String         @id @default(cuid())
+  username              String         @unique
+  passwordHash          String
+  displayName           String
+  dailyHourBudgetMinutes Int           @default(240)
+  createdAt             DateTime       @default(now())
+
+  sessions              Session[]
+  attempts              Attempt[]
+  papers                Paper[]
+  masteryTopics         MasteryTopic[]
+  chatThreads           ChatThread[]
+  studyDays             StudyDay[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// One row per graded question, whether from practice or a weekly test.
+model Attempt {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  questionId      String
+  topicId         String
+  subject         String
+  mode            String // "practice" | "test"
+  paperId         String?
+  paper           Paper?   @relation(fields: [paperId], references: [id])
+  type            String // mcq_single | mcq_multi | numerical | integer | matching
+  correct         Boolean
+  patternMarks    Float
+  timeAwareMarks  Float
+  timeMs          Int
+  expectedSeconds Int
+  rushedGuess     Boolean  @default(false)
+  startedAt       DateTime
+  submittedAt     DateTime
+  createdAt       DateTime @default(now())
+
+  @@index([userId, topicId])
+  @@index([userId, questionId])
+  @@index([paperId])
+}
+
+// One weekly test instance (Main or Advanced pattern) for one student.
+model Paper {
+  id                  String    @id @default(cuid())
+  userId              String
+  user                User      @relation(fields: [userId], references: [id])
+  weekNumber          Int
+  pattern             String // "main" | "advanced"
+  seed                String
+  status              String    @default("in_progress") // in_progress | submitted
+  items               Json // [{ questionId, subject, topicId, orderIndex, optionOrder }]
+  startedAt           DateTime  @default(now())
+  submittedAt         DateTime?
+  totalPatternMarks   Float?
+  totalMaxMarks       Float?
+  totalTimeAwareMarks Float?
+
+  attempts            Attempt[]
+
+  @@unique([userId, weekNumber])
+}
+
+// Cached mastery numbers per (user, topic), recomputed after every attempt.
+model MasteryTopic {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  topicId         String
+  subject         String
+  mastery         Float     @default(0)
+  accuracy        Float     @default(0)
+  difficultyAcc   Float     @default(0)
+  speedEfficiency Float     @default(0)
+  recency         Float     @default(0)
+  consistency     Float     @default(0)
+  attemptsCount   Int       @default(0)
+  lastAttemptAt   DateTime?
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([userId, topicId])
+}
+
+// One chat thread per (user, topic) — never cross-topic, never cross-subject.
+model ChatThread {
+  id        String        @id @default(cuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id])
+  topicId   String
+  createdAt DateTime      @default(now())
+
+  messages  ChatMessage[]
+  summary   ChatSummary?
+
+  @@unique([userId, topicId])
+}
+
+model ChatMessage {
+  id        String     @id @default(cuid())
+  threadId  String
+  thread    ChatThread @relation(fields: [threadId], references: [id])
+  role      String // "user" | "assistant"
+  content   String
+  createdAt DateTime   @default(now())
+
+  @@index([threadId])
+}
+
+model ChatSummary {
+  id        String     @id @default(cuid())
+  threadId  String     @unique
+  thread    ChatThread @relation(fields: [threadId], references: [id])
+  summary   String
+  updatedAt DateTime   @updatedAt
+}
+
+// Day-close record: today's plan vs what actually happened.
+model StudyDay {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  date           String // YYYY-MM-DD, IST
+  weekNumber     Int
+  isTestDay      Boolean   @default(false)
+  plannedBlocks  Json      @default("[]") // [{ topicId, subject, title, minutes, reason }] — decided once, at plan creation
+  plannedMinutes Int
+  minutesStudied Int       @default(0)
+  topicsTouched  Json      @default("[]")
+  closed         Boolean   @default(false)
+  closedAt       DateTime?
+  recapText      String?
+
+  @@unique([userId, date])
+}
