@@ -1,0 +1,22 @@
+{
+  "timezone": "Asia/Kolkata",
+  "defaultDailyMinutes": 240,
+  "studyDaysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  "testDayOfWeek": "Sunday",
+  "subjects": ["maths", "physics", "chemistry"],
+  "chapters": {
+    "maths": "maths-quadratic-equations",
+    "physics": "physics-kinematics",
+    "chemistry": "chemistry-atomic-structure"
+  },
+  "weeks": [
+    { "weekNumber": 1, "pattern": "main", "phaseLabel": "Foundation: Teach & Drill" },
+    { "weekNumber": 2, "pattern": "advanced", "phaseLabel": "Depth: Advanced Problem-Solving" },
+    { "weekNumber": 3, "pattern": "main", "phaseLabel": "Consolidation: Speed & Accuracy" },
+    { "weekNumber": 4, "pattern": "advanced", "phaseLabel": "Stretch: Multi-Concept Problems" },
+    { "weekNumber": 5, "pattern": "main", "phaseLabel": "Remediation: Close the Gaps" },
+    { "weekNumber": 6, "pattern": "advanced", "phaseLabel": "Stress Test: Advanced Mock" },
+    { "weekNumber": 7, "pattern": "main", "phaseLabel": "Sharpen: Full Revision" },
+    { "weekNumber": 8, "pattern": "advanced", "phaseLabel": "Final Mastery Check" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "main": {
+    "label": "JEE Main Pattern",
+    "durationMinutesPerSubject": 55,
+    "perSubject": {
+      "mcq_single": 6,
+      "numerical": 2
+    },
+    "marking": {
+      "mcq_single": { "correct": 4, "wrong": -1, "unattempted": 0 },
+      "numerical": { "correct": 4, "wrong": 0, "unattempted": 0 }
+    }
+  },
+  "advanced": {
+    "label": "JEE Advanced Pattern",
+    "durationMinutesPerSubject": 70,
+    "perSubject": {
+      "mcq_multi": 2,
+      "integer": 1,
+      "matching": 1
+    },
+    "marking": {
+      "mcq_multi": { "correct": 4, "wrong": -2, "unattempted": 0, "partialPerOption": 1 },
+      "integer": { "correct": 3, "wrong": 0, "unattempted": 0 },
+      "matching": { "correct": 3, "wrong": -1, "unattempted": 0 }
+    }
+  }
+}

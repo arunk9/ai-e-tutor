@@ -1,0 +1,724 @@
+{
+  "chapterId": "physics-kinematics",
+  "subject": "physics",
+  "title": "Kinematics (1D & 2D)",
+  "topics": [
+    {
+      "topicId": "phy-kin-distance-displacement",
+      "title": "Distance, Displacement, Speed & Velocity",
+      "order": 1,
+      "estimatedMinutes": 35,
+      "prerequisites": [],
+      "lesson": {
+        "objectives": [
+          "Differentiate between distance (scalar) and displacement (vector) for a given path.",
+          "Differentiate between speed and velocity, including average and instantaneous values.",
+          "Compute average speed and average velocity for multi-segment or variable motion.",
+          "Recognize when average speed equals the magnitude of average velocity."
+        ],
+        "content": "In kinematics we describe motion using both scalar and vector quantities. **Distance** is the total length of the actual path travelled by a body; it is a scalar and can never decrease with time. **Displacement** is the vector joining the initial and final positions; its magnitude is always less than or equal to the distance travelled — equality holds only when the motion is along a straight line without reversing direction.\n\nCorrespondingly, **speed** = distance / time is a scalar, while **velocity** = displacement / time is a vector with both magnitude and direction. Average speed over an interval is total distance divided by total time; average velocity is net displacement divided by total time. These two are generally different, and average speed is always greater than or equal to the magnitude of average velocity.\n\nInstantaneous velocity is defined as $v = dx/dt$, the slope of the position-time graph at that instant; instantaneous speed is simply the magnitude of $v$. For a body covering equal distances at two different speeds $v_1$ and $v_2$, the average speed for the whole journey is $2v_1v_2/(v_1+v_2)$ — the harmonic mean, not the arithmetic mean $(v_1+v_2)/2$. This is one of the most common JEE pitfalls. Always fix a positive direction on the line and treat quantities directed opposite to it as negative, so that displacement, velocity and their signs remain consistent throughout the calculation.",
+        "workedExample": {
+          "problem": "A person walks 3 m due east and then 4 m due north, completing the walk in 5 s. Find (a) the total distance travelled, (b) the magnitude and direction of displacement, (c) the average speed, and (d) the magnitude of average velocity.",
+          "solution": "**Step 1: Distance.** The path length is the sum of the two straight segments: distance = 3 m + 4 m = 7 m.\n\n**Step 2: Displacement.** The two segments (3 m east, 4 m north) are perpendicular, so the net displacement is the hypotenuse: |displacement| = sqrt(3^2 + 4^2) = sqrt(9+16) = sqrt(25) = 5 m.\nDirection: tanθ = (north component)/(east component) = 4/3, so θ = 53.13° north of east.\n\n**Step 3: Average speed.** average speed = total distance / total time = 7 m / 5 s = 1.4 m/s.\n\n**Step 4: Average velocity.** average velocity magnitude = |displacement| / time = 5 m / 5 s = 1.0 m/s, directed 53.13° north of east.\n\nNote that average speed (1.4 m/s) is greater than the magnitude of average velocity (1.0 m/s), exactly as expected since the path is not a straight line."
+        },
+        "jeeTraps": [
+          "Treating displacement and distance as always equal — valid only for one-directional straight-line motion; for any curved or reversing path, distance > |displacement|.",
+          "Using the arithmetic mean (v1+v2)/2 for average speed when equal distances (not equal times) are covered at two different speeds — the correct formula is the harmonic mean 2v1v2/(v1+v2).",
+          "Forgetting to attach a direction to velocity and displacement, and mixing up their signs in multi-segment 1D problems, especially when the motion reverses direction."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-uniform-accel",
+      "title": "Uniformly Accelerated Motion (Equations of Motion)",
+      "order": 2,
+      "estimatedMinutes": 45,
+      "prerequisites": ["phy-kin-distance-displacement"],
+      "lesson": {
+        "objectives": [
+          "Apply the three standard equations of motion v=u+at, s=ut+(1/2)at^2, v^2=u^2+2as for constant acceleration.",
+          "Use the 'distance in the nth second' formula for discrete-second problems.",
+          "Correctly assign sign conventions for acceleration (positive for speeding up, negative for deceleration) along a chosen positive direction.",
+          "Solve multi-stage motion problems by breaking them into constant-acceleration segments."
+        ],
+        "content": "When a body moves along a straight line with constant acceleration $a$, its motion is completely described by three equations relating initial velocity $u$, final velocity $v$, displacement $s$, acceleration $a$ and time $t$:\n\n$v = u + at$\n$s = ut + (1/2)at^2$\n$v^2 = u^2 + 2as$\n\nThese follow from the definitions $a = dv/dt$ and $v = ds/dt$ under the condition that $a$ is constant, and they hold only for that condition — the moment acceleration changes, the motion must be split into separate constant-acceleration stages, each analysed with its own $u$, and the final velocity of one stage becomes the initial velocity of the next.\n\nA useful derived result is the displacement covered in the $n$-th second (not up to the $n$-th second): $s_n = u + a(2n-1)/2$. This comes from subtracting the total displacement up to $(n-1)$ seconds from that up to $n$ seconds.\n\nSign convention is critical: choose one direction as positive at the start of the problem and stick to it. A decelerating body has acceleration opposite in sign to its velocity — writing 'deceleration = 5 m/s^2' and then plugging $a = +5$ into $v = u + at$ for a body moving in the positive direction is one of the most frequent sources of error.",
+        "workedExample": {
+          "problem": "A car moving at 20 m/s applies brakes and decelerates uniformly at 4 m/s^2. Find (a) the time taken to come to rest, and (b) the distance covered before stopping.",
+          "solution": "Take the direction of motion as positive, so u = 20 m/s and a = -4 m/s^2 (deceleration).\n\n**Step 1: Time to stop.** At rest, v = 0. Using v = u + at:\n0 = 20 + (-4)t\nt = 20/4 = 5 s.\n\n**Step 2: Distance covered.** Using v^2 = u^2 + 2as with v = 0:\n0 = (20)^2 + 2(-4)s\n0 = 400 - 8s\ns = 400/8 = 50 m.\n\nSo the car takes 5 s to stop and covers 50 m in doing so."
+        },
+        "jeeTraps": [
+          "Plugging a positive value of a into the equations for a decelerating body instead of using a negative sign relative to the chosen positive direction — this flips the sign of every subsequent answer.",
+          "Applying s = ut + (1/2)at^2 or v^2 = u^2+2as across a motion that actually consists of two or more different constant-acceleration phases, instead of splitting it into separate stages.",
+          "Confusing the 'distance in the nth second' with the 'distance in n seconds' — using s = (1/2)at^2 (total displacement) when the question asks specifically for the displacement during one particular second."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-graphs",
+      "title": "Graphical Analysis (x-t, v-t, a-t)",
+      "order": 3,
+      "estimatedMinutes": 45,
+      "prerequisites": ["phy-kin-distance-displacement", "phy-kin-uniform-accel"],
+      "lesson": {
+        "objectives": [
+          "Read instantaneous velocity as the slope of an x-t graph and instantaneous acceleration as the slope of a v-t graph.",
+          "Compute displacement from the area under a v-t graph and change in velocity from the area under an a-t graph.",
+          "Identify the type of motion from the shape of x-t, v-t and a-t graphs.",
+          "Distinguish between distance and displacement when the v-t graph crosses the time axis."
+        ],
+        "content": "Graphs are a compact way to encode all the information in a kinematics problem, and JEE frequently tests the ability to extract numbers directly from them.\n\n**Position-time (x-t) graph:** the slope at any instant equals the instantaneous velocity, $v = dx/dt$. A straight line means uniform velocity; a curve that bends upward (increasing slope) means the velocity itself is increasing, i.e. positive acceleration. A horizontal line means the body is at rest.\n\n**Velocity-time (v-t) graph:** the slope at any instant equals the instantaneous acceleration, $a = dv/dt$. The area between the graph and the time axis over an interval equals the displacement in that interval; when the graph lies below the axis (negative velocity), that area is counted as negative displacement, but it still adds positively to the total distance travelled. A straight line on a v-t graph is uniformly accelerated motion; a horizontal line is uniform velocity.\n\n**Acceleration-time (a-t) graph:** the area under this graph over an interval gives the change in velocity, Δv, during that interval — not the displacement.\n\nWhen a v-t graph crosses the time axis, the body momentarily reverses direction; to find total distance you must add the magnitudes of the areas of each part separately, while displacement is their algebraic (signed) sum.",
+        "workedExample": {
+          "problem": "The v-t graph of a particle moving along a straight line is as follows: velocity increases uniformly from 0 to 20 m/s in the first 4 s, remains constant at 20 m/s for the next 6 s, and then decreases uniformly to 0 in the final 5 s. Find (a) the total distance travelled, and (b) the average velocity over the complete 15 s journey.",
+          "solution": "The v-t graph consists of three regions whose areas give the displacement in each phase.\n\n**Phase 1 (0 to 4 s):** a triangle with base 4 s and height 20 m/s.\nArea1 = (1/2)(4)(20) = 40 m.\n\n**Phase 2 (4 s to 10 s):** a rectangle with base 6 s and height 20 m/s.\nArea2 = (6)(20) = 120 m.\n\n**Phase 3 (10 s to 15 s):** a triangle with base 5 s and height 20 m/s.\nArea3 = (1/2)(5)(20) = 50 m.\n\n**Total distance** = Area1 + Area2 + Area3 = 40 + 120 + 50 = 210 m.\n\nSince the velocity never becomes negative, the total displacement also equals 210 m.\n\n**Average velocity** = total displacement / total time = 210 m / 15 s = 14 m/s."
+        },
+        "jeeTraps": [
+          "Treating the area under an a-t graph as displacement — it actually gives the change in velocity, Δv, not distance or displacement.",
+          "Adding signed areas under a v-t graph when the question asks for total distance (the magnitudes of each region must be added, ignoring sign) instead of net displacement (signed sum).",
+          "Misreading a curved x-t graph and assuming a decreasing slope means the body is moving backward, when it may simply mean the body is decelerating while still moving forward (velocity positive but decreasing)."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-relative-1d",
+      "title": "Relative Velocity in One Dimension",
+      "order": 4,
+      "estimatedMinutes": 35,
+      "prerequisites": ["phy-kin-distance-displacement", "phy-kin-uniform-accel"],
+      "lesson": {
+        "objectives": [
+          "Define relative velocity of A with respect to B as v_AB = v_A - v_B for straight-line motion.",
+          "Solve train-crossing and overtaking problems using relative velocity and relative displacement.",
+          "Determine time for two bodies to meet, catch up, or separate by a given distance."
+        ],
+        "content": "When two bodies A and B move along the same straight line, the velocity of A as observed from B (relative velocity) is $v_{AB} = v_A - v_B$, where both velocities are measured with the same sign convention. This single idea converts any two-body problem into an equivalent one-body problem: in B's reference frame, A appears to move with velocity $v_{AB}$, and the time for any relative displacement $\\Delta s$ to develop is $t = \\Delta s / v_{AB}$.\n\nTwo classic applications:\n1. **Bodies moving toward each other** (opposite directions): relative velocity of approach = $v_A + v_B$ (speeds add). This is used when two trains moving in opposite directions cross each other, or when two bodies starting apart move toward one another.\n2. **Bodies moving in the same direction:** relative velocity = $v_A - v_B$ (speeds subtract). This applies to overtaking or a chase problem, and also to a train crossing a person/pole walking in the same direction.\n\nFor crossing problems involving extended bodies (trains, platforms), remember that the relevant relative displacement is the **sum of the lengths** of the two objects (train + train, or train + platform), not just the length of one, because the front of one object must travel past the back of the other.",
+        "workedExample": {
+          "problem": "Two trains, 120 m and 80 m long, move on parallel tracks in opposite directions at 15 m/s and 10 m/s respectively. Find the time taken for the trains to completely cross each other.",
+          "solution": "**Step 1: Relative velocity.** Since the trains move in opposite directions, their relative velocity of approach is the sum of their speeds:\nv_rel = 15 m/s + 10 m/s = 25 m/s.\n\n**Step 2: Total relative displacement.** For the trains to completely cross each other (from the moment the fronts meet to the moment the backs separate), the total length to be covered is the sum of both train lengths:\ntotal length = 120 m + 80 m = 200 m.\n\n**Step 3: Time.** time = total length / v_rel = 200 m / 25 m/s = 8 s.\n\nSo the trains take 8 s to cross each other completely."
+        },
+        "jeeTraps": [
+          "Subtracting speeds instead of adding them when two bodies move in opposite directions (or vice versa for the same direction) — always assign a consistent sign convention first.",
+          "Using only one train's length instead of the sum of both lengths when computing crossing time between two moving trains.",
+          "Forgetting that 'time to cross a pole/person' uses only the train's own length, while 'time to cross a platform/bridge' uses (train length + platform length) — mixing these up is a frequent error."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-free-fall",
+      "title": "Motion Under Gravity (Free Fall & Vertical Projectile)",
+      "order": 5,
+      "estimatedMinutes": 40,
+      "prerequisites": ["phy-kin-uniform-accel"],
+      "lesson": {
+        "objectives": [
+          "Apply the equations of motion with a = -g (upward positive) to vertical free-fall and vertical-throw problems.",
+          "Compute time of ascent, maximum height, and total time of flight for a vertically projected body.",
+          "Handle combined problems: a body thrown up/down from a height above the ground, solving for total time to reach the ground.",
+          "Recognize that acceleration remains g downward throughout the motion, including at the highest point."
+        ],
+        "content": "Motion under gravity near the Earth's surface is uniformly accelerated motion with a constant acceleration of magnitude g ≈ 9.8 m/s^2 directed vertically downward (use g = 10 m/s^2 only when a question explicitly says to approximate). The same three equations of motion apply, with a = -g if we take upward as the positive direction, or a = +g if we take downward as positive — pick one convention and use it consistently for the entire problem, including the sign of the initial velocity and any displacement.\n\nFor a body **thrown vertically upward** with speed u (upward positive, a = -g):\n- Time to reach the highest point: t_up = u/g (since velocity = 0 there).\n- Maximum height above the point of projection: H = u^2 / (2g).\n- Time to return to the same point (if it lands at the same level): T = 2u/g, and the return speed equals the launch speed u in magnitude, directed downward.\n\nFor a body **dropped from height h** (initial velocity 0): h = (1/2) g t^2, giving t = (2h/g)^0.5 and final speed v = (2gh)^0.5.\n\nWhen a body is thrown up or down from a height above the ground, set up s = ut - (1/2)g t^2 with s equal to the (signed) net displacement to the ground, and solve the resulting quadratic equation for t, discarding any negative root.",
+        "workedExample": {
+          "problem": "A stone is thrown vertically upward with a speed of 24.5 m/s from the top of a tower 73.5 m high (g = 9.8 m/s^2). Find the total time taken by the stone to reach the ground.",
+          "solution": "Take upward as positive, with the origin at the point of projection (top of tower). Then u = +24.5 m/s, a = -9.8 m/s^2, and the ground is 73.5 m below the starting point, so the net displacement when the stone lands is s = -73.5 m.\n\nUsing s = ut + (1/2)at^2:\n-73.5 = 24.5t - 4.9t^2\n4.9t^2 - 24.5t - 73.5 = 0\n\nDivide through by 4.9:\nt^2 - 5t - 15 = 0\n\nUsing the quadratic formula:\nt = [5 ± (25 + 60)^0.5] / 2 = [5 ± (85)^0.5]/2 = [5 ± 9.22]/2\n\nTaking the positive root (time cannot be negative):\nt = (5 + 9.22)/2 = 14.22/2 = 7.11 s\n\nSo the stone reaches the ground after approximately 7.11 s."
+        },
+        "jeeTraps": [
+          "Using inconsistent signs — e.g. taking u positive (upward) but then also taking g positive in the same equation instead of -g, which silently reverses the physics.",
+          "Assuming the acceleration becomes zero at the highest point because velocity is zero there — acceleration is g downward throughout the flight, including at the topmost point.",
+          "For a projectile thrown from a height, only solving for the time to reach maximum height (or forgetting the tower's height) instead of forming the full quadratic for the net displacement to the ground."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-projectile-2d",
+      "title": "Projectile Motion in Two Dimensions",
+      "order": 6,
+      "estimatedMinutes": 50,
+      "prerequisites": ["phy-kin-uniform-accel", "phy-kin-free-fall"],
+      "lesson": {
+        "objectives": [
+          "Resolve the initial velocity of a projectile into horizontal (u cosθ) and vertical (u sinθ) components and treat them independently.",
+          "Derive and apply formulas for time of flight, maximum height and range for projectiles launched from and landing on the same horizontal level.",
+          "Solve horizontal-projection (from a height) problems by separately using the vertical fall time and the constant horizontal velocity.",
+          "Identify the parabolic trajectory equation and know that speed is minimum (equal to u cosθ) at the highest point."
+        ],
+        "content": "Projectile motion is the superposition of two completely independent one-dimensional motions: uniform velocity in the horizontal direction (no horizontal acceleration, if air resistance is neglected), and uniformly accelerated motion (a = -g) in the vertical direction. The key skill is resolving the initial velocity u launched at angle θ to the horizontal into components u_x = u cosθ (horizontal, constant throughout the flight) and u_y = u sinθ (vertical, changes under gravity).\n\nFor a projectile launched from and landing on the same horizontal level:\n- Time of flight: T = 2u_y/g = 2u sinθ/g\n- Maximum height: H = u_y^2/(2g) = u^2 sin^2θ/(2g)\n- Horizontal range: R = u_x · T = u^2 sin(2θ)/g, which is maximum at θ = 45°.\n\nAt the highest point, the vertical velocity component is zero, so the speed there is simply u_x = u cosθ — the minimum speed anywhere on the trajectory.\n\nFor **horizontal projection from a height h** (e.g. a ball rolling off a table), the initial vertical velocity is zero, so the time to hit the ground depends only on h: h = (1/2) g t^2, giving t = (2h/g)^0.5, independent of the horizontal speed. The horizontal distance travelled is then simply (horizontal speed) × t.\n\nThe trajectory itself, obtained by eliminating t between x = u_x t and y = u_y t − (1/2)g t^2, is a downward-opening parabola: y = x tanθ − g x^2/(2 u^2 cos^2θ).",
+        "workedExample": {
+          "problem": "A ball is projected horizontally with a speed of 15 m/s from the top of a cliff 45 m high (g = 10 m/s^2). Find the horizontal distance from the base of the cliff where the ball lands.",
+          "solution": "Since the ball is projected horizontally, its initial vertical velocity component is zero (u_y = 0), and the horizontal component remains constant at u_x = 15 m/s throughout the flight (no horizontal acceleration).\n\n**Step 1: Time of flight (from vertical motion alone).**\nh = (1/2) g t^2\n45 = (1/2)(10)t^2 = 5t^2\nt^2 = 9\nt = 3 s\n\n**Step 2: Horizontal distance (from horizontal motion alone).**\nx = u_x · t = 15 m/s × 3 s = 45 m\n\nSo the ball lands 45 m from the base of the cliff."
+        },
+        "jeeTraps": [
+          "Using the launch speed u (instead of only the vertical component u_y) inside the time-of-flight or height formulas, or mixing horizontal and vertical components in the same equation.",
+          "Forgetting that for horizontal projection from a height, the vertical motion (and hence time of flight) is completely independent of the horizontal launch speed.",
+          "Swapping sinθ and cosθ when resolving the initial velocity — remember u_x = u cosθ (adjacent to the angle from horizontal) and u_y = u sinθ (opposite)."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-relative-2d",
+      "title": "Relative Velocity in Two Dimensions (River-Boat, Rain-Man)",
+      "order": 7,
+      "estimatedMinutes": 45,
+      "prerequisites": ["phy-kin-relative-1d", "phy-kin-projectile-2d"],
+      "lesson": {
+        "objectives": [
+          "Compute relative velocity vectors using vector subtraction, v_AB = v_A − v_B, in two dimensions.",
+          "Solve river-boat problems: minimum-time crossing (straight-across heading) versus minimum-drift/shortest-path crossing (upstream heading).",
+          "Solve rain-man type problems by finding the velocity of one object relative to a moving observer.",
+          "Determine drift, resultant velocity, and crossing angle from given boat speed and river-flow speed."
+        ],
+        "content": "In two dimensions, relative velocity is found by vector subtraction: the velocity of A relative to B is v_AB = v_A − v_B, obtained component-wise or by a vector (triangle/parallelogram) diagram. To a moving observer B, object A appears to move with velocity v_AB, not v_A.\n\n**River-boat problems** are the classic application. Let v_b be the boat's speed relative to still water and v_r be the river's flow speed (river width = d).\n- **Minimum time to cross:** point the boat straight across (perpendicular to the bank). The full boat speed v_b contributes to crossing, so t_min = d/v_b — this time does not depend on v_r at all. The boat drifts downstream by v_r × t_min.\n- **Shortest path (zero drift) crossing:** only possible if v_b > v_r. The boat must be steered upstream at angle θ from the perpendicular to the bank, where sinθ = v_r/v_b, so that the river-ward component of the boat's velocity exactly cancels the current. The resultant speed straight across is then (v_b^2 − v_r^2)^0.5, and the crossing time d/(v_b^2 − v_r^2)^0.5 is always longer than t_min.\n\n**Rain-man problems** work the same way: if rain falls with velocity v_rain (usually vertically) and a person moves with velocity v_man, the rain's velocity relative to the person is v_rain − v_man, found by vector subtraction — draw the vector diagram and use tanθ = (horizontal component)/(vertical component) to get the apparent angle from the vertical.",
+        "workedExample": {
+          "problem": "A river 200 m wide flows at 3 m/s. A boat can move at 5 m/s relative to still water. (a) If the boat is steered directly across (perpendicular to the bank), find the time to cross and the downstream drift. (b) Find the angle (from the perpendicular) at which the boat must be steered to cross by the shortest path, and the time taken in that case.",
+          "solution": "**Part (a): Straight-across heading.**\nThe boat's full speed contributes to crossing: t = width/v_b = 200 m/5 m/s = 40 s.\nDrift during this time = v_r × t = 3 m/s × 40 s = 120 m downstream.\n\n**Part (b): Shortest-path (zero-drift) heading.**\nThe boat must point upstream at angle θ from the perpendicular such that the upstream component of its velocity cancels the current:\nv_b sinθ = v_r\nsinθ = v_r/v_b = 3/5 = 0.6\nθ = sin⁻¹(0.6) = 36.87° from the perpendicular to the bank (i.e., upstream).\n\nThe resultant velocity straight across the river is then:\nv_result = (v_b^2 − v_r^2)^0.5 = (25 − 9)^0.5 = (16)^0.5 = 4 m/s\n\nTime to cross by this path:\nt = width/v_result = 200 m/4 m/s = 50 s\n\nNote this time (50 s) is longer than the straight-across time (40 s), as expected."
+        },
+        "jeeTraps": [
+          "Confusing the minimum-time heading (straight across) with the minimum-drift/shortest-path heading (angled upstream) — these give different times, and the shortest path is always slower, never faster.",
+          "Attempting the shortest-path calculation when v_r ≥ v_b — this is physically impossible since the boat cannot generate enough upstream component to cancel a current faster than (or equal to) itself.",
+          "Adding velocity magnitudes directly instead of performing proper vector (component-wise) subtraction/addition when combining boat/river or rain/man velocities that are not along the same line."
+        ]
+      }
+    },
+    {
+      "topicId": "phy-kin-circular-basics",
+      "title": "Kinematics of Circular Motion (Angular Variables)",
+      "order": 8,
+      "estimatedMinutes": 40,
+      "prerequisites": ["phy-kin-uniform-accel", "phy-kin-graphs"],
+      "lesson": {
+        "objectives": [
+          "Define angular displacement θ, angular velocity ω = dθ/dt, and angular acceleration α = dω/dt, and relate them via rotational equations of motion analogous to linear kinematics.",
+          "Apply v = rω to connect linear and angular speed for a point moving in a circle of radius r.",
+          "Distinguish and correctly compute centripetal (radial) acceleration a_c = v^2/r = ω^2 r and tangential acceleration a_t = rα.",
+          "Recognize that uniform circular motion has non-zero centripetal acceleration despite constant speed."
+        ],
+        "content": "Circular motion is described using angular analogues of the linear kinematic quantities. Angular displacement θ (in radians) plays the role of position; angular velocity ω = dθ/dt (rad/s) plays the role of velocity; angular acceleration α = dω/dt (rad/s^2) plays the role of acceleration. When α is constant, the rotational equations of motion mirror the linear ones exactly:\n\nω = ω₀ + αt\nθ = ω₀t + (1/2)αt^2\nω^2 = ω₀^2 + 2αθ\n\nFor a particle moving on a circle of radius r, its linear (tangential) speed is v = rω, and if the angular acceleration is non-zero, the tangential (linear) acceleration is a_t = rα — this component changes the speed of the particle.\n\nIndependently, any particle moving in a circle — even at constant speed — is continuously changing direction, which requires a centripetal (radially inward) acceleration of magnitude a_c = v^2/r = ω^2 r. This is present in every case of circular motion, uniform or not; it is a common misconception that 'uniform circular motion has no acceleration' — in fact its acceleration is always non-zero and points toward the centre.\n\nFor non-uniform circular motion, the two acceleration components are perpendicular to each other (tangential along the velocity direction, centripetal toward the centre), and the net (total) acceleration is their vector sum, with magnitude (a_t^2 + a_c^2)^0.5, generally pointing neither along the tangent nor exactly toward the centre.",
+        "workedExample": {
+          "problem": "A wheel starts from rest and rotates with a constant angular acceleration of 2 rad/s^2. Find (a) its angular velocity after 5 s, (b) the number of revolutions completed in that time, and (c) the linear speed of a point located 0.5 m from the axis at t = 5 s.",
+          "solution": "Given ω₀ = 0, α = 2 rad/s^2, t = 5 s.\n\n**Step 1: Angular velocity at t = 5 s.**\nω = ω₀ + αt = 0 + 2 × 5 = 10 rad/s\n\n**Step 2: Angular displacement and revolutions.**\nθ = ω₀t + (1/2)αt^2 = 0 + (1/2)(2)(5)^2 = 25 rad\nNumber of revolutions = θ/(2π) = 25/6.2832 ≈ 3.98 revolutions\n\n**Step 3: Linear speed at r = 0.5 m.**\nv = rω = 0.5 × 10 = 5 m/s"
+        },
+        "jeeTraps": [
+          "Believing that uniform circular motion (constant speed) means zero acceleration — the centripetal acceleration v^2/r is always present and non-zero whenever the direction of motion is changing.",
+          "Mixing up units — plugging in angular velocity in revolutions per second or rpm directly into formulas that require rad/s, without converting (1 rev = 2π rad; 1 rpm = 2π/60 rad/s).",
+          "Using a_c = v^2/r for the tangential acceleration or a_t = rα for the centripetal acceleration — these two formulas describe different (perpendicular) components and must not be interchanged."
+        ]
+      }
+    }
+  ],
+  "questionPool": [
+    {
+      "id": "phy-kin-001",
+      "topicId": "phy-kin-distance-displacement",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 75,
+      "stem": "A particle moves along a straight line: it travels 8 m due east and then 6 m due west. Find the ratio of the magnitude of displacement to the total distance travelled.",
+      "options": ["A. 1/7", "B. 1/2", "C. 7", "D. 2"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Distance travelled = 8 m + 6 m = 14 m (path length, scalar). Net displacement = 8 m (east) − 6 m (west) = 2 m east (taking east as positive). Ratio = displacement/distance = 2/14 = 1/7. Correct option: A."
+    },
+    {
+      "id": "phy-kin-002",
+      "topicId": "phy-kin-distance-displacement",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "A particle moves with a speed of 10 m/s for the first 5 s and then with a speed of 20 m/s for the next 5 s, both along the same direction. Find its average speed over the entire 10 s.",
+      "options": ["A. 10 m/s", "B. 15 m/s", "C. 20 m/s", "D. 30 m/s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "Total distance = (10 m/s × 5 s) + (20 m/s × 5 s) = 50 m + 100 m = 150 m. Total time = 5 s + 5 s = 10 s. Average speed = total distance/total time = 150/10 = 15 m/s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-003",
+      "topicId": "phy-kin-distance-displacement",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "A car covers the first half of a certain distance at a constant speed of 40 km/h and the second half at a constant speed of 60 km/h. Find its average speed for the entire journey.",
+      "options": ["A. 48 km/h", "B. 50 km/h", "C. 45 km/h", "D. 52 km/h"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Let total distance = 2d, so each half = d. Time for first half = d/40 h, time for second half = d/60 h. Total time = d/40 + d/60 = d(3+2)/120 = 5d/120 = d/24 h. Average speed = total distance/total time = 2d/(d/24) = 48 km/h. (This matches the harmonic-mean formula 2v1v2/(v1+v2) = 2×40×60/100 = 48 km/h.) Correct option: A."
+    },
+    {
+      "id": "phy-kin-004",
+      "topicId": "phy-kin-distance-displacement",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 150,
+      "stem": "The position of a particle moving along the x-axis is given by $x(t) = 3t^2 - 2t + 5$ (x in metres, t in seconds). Find its average velocity, in m/s, between t = 1 s and t = 3 s.",
+      "options": null,
+      "correct": 10,
+      "tolerance": 0.1,
+      "solution": "x(t) = 3t^2 − 2t + 5. At t=1 s: x(1) = 3(1) − 2(1) + 5 = 3 − 2 + 5 = 6 m. At t=3 s: x(3) = 3(9) − 2(3) + 5 = 27 − 6 + 5 = 26 m. Average velocity = [x(3) − x(1)]/(3−1) = (26−6)/2 = 20/2 = 10 m/s."
+    },
+    {
+      "id": "phy-kin-005",
+      "topicId": "phy-kin-distance-displacement",
+      "type": "integer",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "A man walks 3 m due north, then 4 m due east, then 3 m due south. Find the magnitude of his net displacement, in metres.",
+      "options": null,
+      "correct": 4,
+      "tolerance": null,
+      "solution": "Northward displacements: +3 m and −3 m (south), net north-south displacement = 3 − 3 = 0 m. Eastward displacement = 4 m. Net displacement magnitude = sqrt(0^2 + 4^2) = 4 m. Answer: 4."
+    },
+    {
+      "id": "phy-kin-006",
+      "topicId": "phy-kin-uniform-accel",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "A car starts from rest and accelerates uniformly at 2 m/s^2. Find its speed after 6 s.",
+      "options": ["A. 6 m/s", "B. 10 m/s", "C. 12 m/s", "D. 14 m/s"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "u = 0, a = 2 m/s^2, t = 6 s. Using v = u + at: v = 0 + 2×6 = 12 m/s. Correct option: C."
+    },
+    {
+      "id": "phy-kin-007",
+      "topicId": "phy-kin-uniform-accel",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "A body moving at 20 m/s decelerates uniformly at 5 m/s^2. Find the time taken for it to come to rest.",
+      "options": ["A. 2 s", "B. 4 s", "C. 5 s", "D. 8 s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "u = 20 m/s, v = 0 (comes to rest), deceleration magnitude a = 5 m/s^2 (so a = −5 m/s^2 taking the direction of motion as positive). Using v = u + at: 0 = 20 − 5t, so t = 20/5 = 4 s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-008",
+      "topicId": "phy-kin-uniform-accel",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "A train moving at 30 m/s decelerates uniformly and comes to rest after covering 100 m. Find the magnitude of its deceleration.",
+      "options": ["A. 3.0 m/s^2", "B. 4.5 m/s^2", "C. 6.0 m/s^2", "D. 9.0 m/s^2"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "u = 30 m/s, v = 0, s = 100 m. Using v^2 = u^2 + 2as: 0 = (30)^2 + 2a(100) = 900 + 200a, so a = −900/200 = −4.5 m/s^2. Magnitude of deceleration = 4.5 m/s^2. Correct option: B."
+    },
+    {
+      "id": "phy-kin-009",
+      "topicId": "phy-kin-uniform-accel",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "A particle starts from rest and moves with a constant acceleration of 3 m/s^2. Find the distance covered by it, in metres, during the 4th second of its motion.",
+      "options": null,
+      "correct": 10.5,
+      "tolerance": 0.1,
+      "solution": "Using the nth-second displacement formula s_n = u + a(2n−1)/2 with u=0, a=3 m/s^2, n=4: s_4 = 0 + 3(2×4−1)/2 = 3×7/2 = 10.5 m. (Check: distance in 4 s = 0.5×3×16 = 24 m; distance in 3 s = 0.5×3×9 = 13.5 m; difference = 24 − 13.5 = 10.5 m, confirming the answer.)"
+    },
+    {
+      "id": "phy-kin-010",
+      "topicId": "phy-kin-uniform-accel",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "Car A starts from rest at t = 0 and accelerates uniformly at 2 m/s^2. Car B starts from rest at the same point but 2 s later, accelerating uniformly at 4 m/s^2 in the same direction. Find the time, in seconds (measured from the instant A started), at which B catches up with A.",
+      "options": null,
+      "correct": 6.83,
+      "tolerance": 0.1,
+      "solution": "Let t = time measured from when A starts. Car A: x_A = (1/2)(2)t^2 = t^2. Car B starts 2 s later, so for t ≥ 2, its elapsed running time is (t−2), and x_B = (1/2)(4)(t−2)^2 = 2(t−2)^2. Setting x_A = x_B: t^2 = 2(t−2)^2 = 2t^2 − 8t + 8, so t^2 − 8t + 8 = 0. By the quadratic formula: t = [8 ± sqrt(64−32)]/2 = [8 ± sqrt(32)]/2 = [8 ± 5.657]/2. This gives t = 6.83 s or t = 1.17 s. Since B only starts moving at t = 2 s, the root t = 1.17 s (before B starts) is rejected. Hence B catches up with A at t ≈ 6.83 s (measured from A's start)."
+    },
+    {
+      "id": "phy-kin-011",
+      "topicId": "phy-kin-uniform-accel",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "A body has an initial velocity of 2 m/s and moves with a constant acceleration of 3 m/s^2. After how many seconds will its velocity become 20 m/s?",
+      "options": null,
+      "correct": 6,
+      "tolerance": null,
+      "solution": "u = 2 m/s, a = 3 m/s^2, v = 20 m/s. Using v = u + at: 20 = 2 + 3t, so 3t = 18, t = 6 s. Answer: 6."
+    },
+    {
+      "id": "phy-kin-012",
+      "topicId": "phy-kin-graphs",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 60,
+      "stem": "On a velocity-time (v-t) graph, the slope at any instant represents:",
+      "options": ["A. Displacement", "B. Distance travelled", "C. Instantaneous acceleration", "D. Average velocity"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "By definition, acceleration a = dv/dt, which is exactly the slope of a velocity-time graph at any instant. Correct option: C."
+    },
+    {
+      "id": "phy-kin-013",
+      "topicId": "phy-kin-graphs",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "The velocity-time graph of a particle is a straight line joining the point (t=0, v=10 m/s) to the point (t=5 s, v=0). Find the distance covered by the particle in these 5 s.",
+      "options": ["A. 10 m", "B. 20 m", "C. 25 m", "D. 50 m"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "The v-t graph is a straight line from v=10 m/s at t=0 to v=0 at t=5 s — a triangle. Distance = area under graph = (1/2) × base × height = (1/2)(5 s)(10 m/s) = 25 m. Correct option: C."
+    },
+    {
+      "id": "phy-kin-014",
+      "topicId": "phy-kin-graphs",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "Which of the following statements about position-time (x-t) graphs are correct?\n\nA. The slope of the x-t graph at any point gives the instantaneous velocity at that point.\nB. A straight-line x-t graph with constant positive slope represents motion with uniform (constant) velocity.\nC. The area enclosed between the x-t graph and the time axis represents the distance travelled.\nD. A parabolic x-t graph represents motion with uniform (constant, non-zero) acceleration.",
+      "options": ["A. Statement A", "B. Statement B", "C. Statement C", "D. Statement D"],
+      "correct": ["A", "B", "D"],
+      "tolerance": null,
+      "solution": "A is correct: slope of x-t graph = dx/dt = instantaneous velocity, by definition. B is correct: a straight line on an x-t graph has constant slope, hence constant (uniform) velocity. C is incorrect: the area 'under' an x-t graph (between the curve and time axis) has no standard physical meaning in kinematics — it is not distance. D is correct: for constant acceleration, x = x0 + ut + (1/2)at^2, which is quadratic in t, i.e. a parabola; conversely a parabolic x-t graph indicates constant non-zero acceleration. Correct options: A, B, D."
+    },
+    {
+      "id": "phy-kin-015",
+      "topicId": "phy-kin-graphs",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "For a particle undergoing motion with constant acceleration, which of the following statements are correct?\n\nA. The area under the v-t graph between two instants gives the displacement in that interval.\nB. If the acceleration is constant and non-zero, the a-t graph is a horizontal straight line.\nC. If the v-t graph is a straight line through the origin with positive slope, the initial velocity is zero.\nD. The area under the a-t graph gives the displacement.",
+      "options": ["A. Statement A", "B. Statement B", "C. Statement C", "D. Statement D"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A is correct: the area under a v-t graph between two instants equals the displacement in that interval, since the integral of v dt is displacement. B is correct: constant acceleration means the a-t graph is a horizontal line at that constant value. C is correct: a straight line through the origin with positive slope means v=0 at t=0, i.e., the initial velocity is zero. D is incorrect: the area under an a-t graph gives the change in velocity (integral of a dt = Δv), not displacement. Correct options: A, B, C."
+    },
+    {
+      "id": "phy-kin-016",
+      "topicId": "phy-kin-graphs",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 200,
+      "stem": "Match the type of motion in Column I with the correct shape of its velocity-time (v-t) graph in Column II.\n\n**Column I**\nP. Uniform velocity\nQ. Uniformly accelerated motion starting from rest\nR. Uniformly decelerated motion, coming to rest\nS. Uniformly accelerated motion with a non-zero initial velocity\n\n**Column II**\n1. Horizontal straight line\n2. Straight line through the origin with positive slope\n3. Straight line with negative slope that reaches zero\n4. Straight line with a positive intercept and positive slope",
+      "options": null,
+      "correct": {"P": "1", "Q": "2", "R": "3", "S": "4"},
+      "tolerance": null,
+      "solution": "P (uniform velocity) → v-t graph is a horizontal straight line → 1. Q (uniformly accelerated from rest) → v-t graph is a straight line through the origin with positive slope → 2. R (uniformly decelerated to rest) → v-t graph is a straight line with negative slope that reaches zero → 3. S (uniform acceleration with non-zero initial velocity) → v-t graph is a straight line with a positive y-intercept and positive slope → 4. Matching: P-1, Q-2, R-3, S-4."
+    },
+    {
+      "id": "phy-kin-017",
+      "topicId": "phy-kin-graphs",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 150,
+      "stem": "The velocity-time graph of a particle moving along a straight line is a straight line joining (t=0, v=2 m/s) to (t=4 s, v=10 m/s). Find the acceleration of the particle, in m/s^2.",
+      "options": null,
+      "correct": 2,
+      "tolerance": null,
+      "solution": "The v-t graph is a straight line from v=2 m/s at t=0 to v=10 m/s at t=4 s. Acceleration = slope = (v_final − v_initial)/Δt = (10−2)/4 = 8/4 = 2 m/s^2. Answer: 2."
+    },
+    {
+      "id": "phy-kin-018",
+      "topicId": "phy-kin-relative-1d",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 75,
+      "stem": "Two cars A and B move in the same direction along a straight road with speeds 25 m/s and 15 m/s respectively. Find the velocity of A relative to B.",
+      "options": ["A. 10 m/s", "B. 15 m/s", "C. 25 m/s", "D. 40 m/s"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Taking the common direction of motion as positive: v_A = 25 m/s, v_B = 15 m/s. Relative velocity of A with respect to B: v_AB = v_A − v_B = 25 − 15 = 10 m/s (in the same direction as both cars are moving). Correct option: A."
+    },
+    {
+      "id": "phy-kin-019",
+      "topicId": "phy-kin-relative-1d",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "Two trains, each 100 m long, move on parallel tracks in opposite directions with speeds 20 m/s and 30 m/s. Find the time taken for the trains to completely cross each other.",
+      "options": ["A. 2 s", "B. 4 s", "C. 5 s", "D. 10 s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "The trains move in opposite directions, so their relative velocity of approach is the sum of their speeds: v_rel = 20 + 30 = 50 m/s. To completely cross each other, the combined length (100 m + 100 m = 200 m) must be covered at this relative velocity: t = 200/50 = 4 s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-020",
+      "topicId": "phy-kin-relative-1d",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "A 150 m long train moving at a constant speed of 20 m/s crosses a stationary platform of length 100 m. Find the time taken for the train to completely cross the platform.",
+      "options": ["A. 10 s", "B. 12.5 s", "C. 15 s", "D. 20 s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "For a train crossing a platform completely, the train must cover a distance equal to its own length plus the platform's length: total distance = 150 m + 100 m = 250 m. Time = distance/speed = 250/20 = 12.5 s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-021",
+      "topicId": "phy-kin-relative-1d",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "Car A moves at a constant 20 m/s. Car B, initially 500 m behind car A on the same straight road, chases it at a constant 30 m/s in the same direction. Find the time, in seconds, taken for B to catch up with A.",
+      "options": null,
+      "correct": 50,
+      "tolerance": 0.5,
+      "solution": "Both cars move in the same direction, so the relative velocity of B with respect to A is v_B − v_A = 30 − 20 = 10 m/s. B must close the initial 500 m gap at this relative velocity: t = 500/10 = 50 s."
+    },
+    {
+      "id": "phy-kin-022",
+      "topicId": "phy-kin-relative-1d",
+      "type": "integer",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "Two swimmers start from the same point along a straight line in a pool, swimmer A moving at 3 m/s and swimmer B at 1 m/s in the same direction. After how many seconds will the separation between them become 12 m?",
+      "options": null,
+      "correct": 6,
+      "tolerance": null,
+      "solution": "Relative velocity of A with respect to B = 3 − 1 = 2 m/s (same direction, speeds subtract). The separation grows at this relative rate, so for a separation of 12 m: t = 12/2 = 6 s. Answer: 6."
+    },
+    {
+      "id": "phy-kin-023",
+      "topicId": "phy-kin-free-fall",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "A stone is dropped from rest from a height of 44.1 m (take g = 9.8 m/s^2). Find the time taken to reach the ground.",
+      "options": ["A. 2 s", "B. 3 s", "C. 4 s", "D. 5 s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "For a body dropped from rest, h = (1/2)g t^2. Given h = 44.1 m, g = 9.8 m/s^2: 44.1 = (1/2)(9.8)t^2 = 4.9t^2, so t^2 = 9, t = 3 s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-024",
+      "topicId": "phy-kin-free-fall",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "A ball is thrown vertically upward with a speed of 19.6 m/s (take g = 9.8 m/s^2). Find the total time taken for it to return to the point of projection.",
+      "options": ["A. 2 s", "B. 3 s", "C. 4 s", "D. 6 s"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "For a ball thrown upward and returning to the same launch point, total time of flight T = 2u/g. Given u = 19.6 m/s, g = 9.8 m/s^2: T = 2(19.6)/9.8 = 39.2/9.8 = 4 s. Correct option: C."
+    },
+    {
+      "id": "phy-kin-025",
+      "topicId": "phy-kin-free-fall",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "A stone is thrown vertically upward with a speed of 24.5 m/s from the top of a tower 73.5 m high (take g = 9.8 m/s^2). Find the total time, in seconds, taken by the stone to reach the ground.",
+      "options": null,
+      "correct": 7.11,
+      "tolerance": 0.05,
+      "solution": "Take upward as positive with origin at the point of projection. u = +24.5 m/s, a = −9.8 m/s^2. The ground is 73.5 m below the start, so net displacement s = −73.5 m when the stone lands. Using s = ut + (1/2)at^2: −73.5 = 24.5t − 4.9t^2, i.e. 4.9t^2 − 24.5t − 73.5 = 0. Dividing by 4.9: t^2 − 5t − 15 = 0. By the quadratic formula: t = [5 ± sqrt(25+60)]/2 = [5 ± sqrt(85)]/2 = [5 ± 9.22]/2. Taking the positive root: t = 14.22/2 = 7.11 s."
+    },
+    {
+      "id": "phy-kin-026",
+      "topicId": "phy-kin-free-fall",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "A ball is thrown vertically upward and undergoes free fall under gravity (air resistance neglected, g = 9.8 m/s^2, directed downward and constant throughout). Which of the following statements are correct?\n\nA. At the highest point, its velocity is zero but its acceleration is still 9.8 m/s^2 downward (non-zero).\nB. The speed of the ball when it returns to the point of projection equals its initial speed of projection.\nC. The time taken to go up to the highest point equals the time taken to come back down to the same starting point.\nD. The acceleration of the ball is zero at the highest point.",
+      "options": ["A. Statement A", "B. Statement B", "C. Statement C", "D. Statement D"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A is correct: at the highest point v=0, but the acceleration is still g=9.8 m/s^2 downward, since gravity acts throughout the flight. B is correct: by symmetry of projectile motion under constant gravity (no air resistance), the speed on return to the starting height equals the launch speed. C is correct: time to rise = u/g equals time to fall back to the same level = u/g, by symmetry. D is incorrect: acceleration is never zero during free flight under gravity — it remains g downward even at the highest point, where only the velocity (not the acceleration) is zero. Correct options: A, B, C."
+    },
+    {
+      "id": "phy-kin-027",
+      "topicId": "phy-kin-free-fall",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "A ball is dropped from a height of 45 m above the ground (take g = 10 m/s^2). Find the time taken, in seconds, to cover the last 25 m of its fall before hitting the ground.",
+      "options": null,
+      "correct": 1,
+      "tolerance": null,
+      "solution": "Total height = 45 m, g = 10 m/s^2. Total fall time: 45 = (1/2)(10)t^2 = 5t^2, so t^2=9, t=3 s. The stone falls the first (45−25)=20 m before starting the 'last 25 m'. Time to fall 20 m: 20 = (1/2)(10)t1^2 = 5t1^2, so t1^2=4, t1=2 s. Time to cover the last 25 m = total time − t1 = 3 − 2 = 1 s. Answer: 1."
+    },
+    {
+      "id": "phy-kin-028",
+      "topicId": "phy-kin-projectile-2d",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 75,
+      "stem": "A projectile is launched with a speed of 20 m/s at an angle of 30° above the horizontal (take g = 10 m/s^2). Find its time of flight.",
+      "options": ["A. 1 s", "B. 2 s", "C. 3 s", "D. 4 s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "u = 20 m/s, θ = 30°, g = 10 m/s^2. Vertical component u_y = u sinθ = 20 × 0.5 = 10 m/s. Time of flight T = 2u_y/g = 2(10)/10 = 2 s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-029",
+      "topicId": "phy-kin-projectile-2d",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "A projectile is launched with a speed of 20 m/s at an angle of 30° above the horizontal (take g = 10 m/s^2). Find the maximum height reached.",
+      "options": ["A. 2.5 m", "B. 5 m", "C. 7.5 m", "D. 10 m"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "u_y = 20 sin30° = 10 m/s, g = 10 m/s^2. Maximum height H = u_y^2/(2g) = (10)^2/(20) = 100/20 = 5 m. Correct option: B."
+    },
+    {
+      "id": "phy-kin-030",
+      "topicId": "phy-kin-projectile-2d",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "A projectile is fired with a speed of 40 m/s at an angle of 45° to the horizontal on level ground (take g = 10 m/s^2). Find its horizontal range.",
+      "options": ["A. 80 m", "B. 120 m", "C. 160 m", "D. 200 m"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "u = 40 m/s, θ = 45°, g = 10 m/s^2. Range R = u^2 sin(2θ)/g = (40)^2 × sin(90°)/10 = 1600 × 1/10 = 160 m. Correct option: C."
+    },
+    {
+      "id": "phy-kin-031",
+      "topicId": "phy-kin-projectile-2d",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "A ball is projected horizontally with a speed of 15 m/s from the top of a cliff 45 m high (take g = 10 m/s^2). Find the horizontal distance, in metres, from the base of the cliff where the ball lands.",
+      "options": null,
+      "correct": 45,
+      "tolerance": 0.5,
+      "solution": "The ball is projected horizontally, so its initial vertical velocity is zero and only gravity acts vertically. Time to fall height h=45 m: h = (1/2)g t^2 → 45 = (1/2)(10)t^2 = 5t^2, so t^2 = 9, t = 3 s. Horizontal distance (constant horizontal speed 15 m/s): x = 15 × 3 = 45 m."
+    },
+    {
+      "id": "phy-kin-032",
+      "topicId": "phy-kin-projectile-2d",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "A projectile is launched at an angle θ (0° < θ < 90°) with speed u on level ground, and air resistance is neglected. Which of the following statements are correct?\n\nA. The horizontal component of velocity remains constant throughout the flight.\nB. The vertical component of velocity is zero at the highest point of the trajectory.\nC. The speed of the projectile is minimum at the highest point of its trajectory.\nD. The time of flight is independent of the angle of projection, for a fixed launch speed u.",
+      "options": ["A. Statement A", "B. Statement B", "C. Statement C", "D. Statement D"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A is correct: with no air resistance, there is no horizontal force, so the horizontal velocity component stays constant. B is correct: at the highest point the vertical velocity is momentarily zero (the projectile is neither rising nor falling at that instant). C is correct: at the highest point speed = u cosθ (only the horizontal component survives), and since speed elsewhere = sqrt((u cosθ)^2 + v_y^2) ≥ u cosθ, this is the minimum speed on the trajectory. D is incorrect: time of flight T = 2u sinθ/g clearly depends on the launch angle θ. Correct options: A, B, C."
+    },
+    {
+      "id": "phy-kin-033",
+      "topicId": "phy-kin-projectile-2d",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 210,
+      "stem": "A projectile is launched at an angle of 60° to the horizontal with a speed of 20 m/s (take g = 10 m/s^2). Match the quantities in Column I with their correct values in Column II.\n\n**Column I**\nP. Time of flight\nQ. Maximum height\nR. Horizontal range\nS. Horizontal component of velocity\n\n**Column II**\n1. 34.6 m\n2. 15 m\n3. 3.46 s\n4. 10 m/s",
+      "options": null,
+      "correct": {"P": "3", "Q": "2", "R": "1", "S": "4"},
+      "tolerance": null,
+      "solution": "u = 20 m/s, θ = 60°, g = 10 m/s^2. u_x = u cos60° = 20×0.5 = 10 m/s. u_y = u sin60° = 20×0.866 = 17.32 m/s. Time of flight T = 2u_y/g = 2(17.32)/10 = 3.46 s. Maximum height H = u_y^2/(2g) = (17.32)^2/20 = 300/20 = 15 m (since u_y^2 = 400×0.75 = 300 exactly). Range R = u_x × T = 10×3.46 = 34.6 m. So: P (time of flight) = 3.46 s → option 3; Q (max height) = 15 m → option 2; R (range) = 34.6 m → option 1; S (horizontal velocity component) = 10 m/s → option 4. Matching: P-3, Q-2, R-1, S-4."
+    },
+    {
+      "id": "phy-kin-034",
+      "topicId": "phy-kin-relative-2d",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "A river flows at 4 m/s. A boat's speed in still water is 5 m/s. The boat is steered directly across the river (perpendicular to the flow). If the river is 200 m wide, find the time taken to cross.",
+      "options": ["A. 25 s", "B. 40 s", "C. 50 s", "D. 80 s"],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "When the boat heads directly across (perpendicular to the flow), its full speed contributes to crossing the river. Time = width/boat speed = 200/5 = 40 s. Correct option: B."
+    },
+    {
+      "id": "phy-kin-035",
+      "topicId": "phy-kin-relative-2d",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "A river flows at 4 m/s. A boat with speed 5 m/s in still water is steered directly across a 200 m wide river (perpendicular to the flow). Find the downstream drift when the boat reaches the opposite bank.",
+      "options": ["A. 80 m", "B. 120 m", "C. 160 m", "D. 200 m"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "Drift = (river flow speed) × (time to cross) = 4 m/s × 40 s = 160 m, since the time to cross (from heading straight across) = 200/5 = 40 s. Correct option: C."
+    },
+    {
+      "id": "phy-kin-036",
+      "topicId": "phy-kin-relative-2d",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "A boat can move at 10 m/s relative to still water, in a river that flows at 6 m/s. Find the minimum time, in seconds, needed to cross a 400 m wide river.",
+      "options": null,
+      "correct": 40,
+      "tolerance": 0.5,
+      "solution": "For minimum crossing time, the boat must be pointed directly across (perpendicular to the bank), so its full speed (10 m/s) contributes entirely to crossing the river — this minimum time is independent of the river's flow speed. t_min = width/boat speed = 400/10 = 40 s."
+    },
+    {
+      "id": "phy-kin-037",
+      "topicId": "phy-kin-relative-2d",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "A man wants to cross a river using a boat whose speed in still water is 5 m/s; the river flows at 3 m/s. Which of the following statements are correct?\n\nA. The minimum time to cross the river is obtained when the boat is pointed directly across (perpendicular to the bank).\nB. The shortest path (straight-line, zero-drift) crossing is possible only if the boat speed exceeds the river speed.\nC. When crossing via the shortest path, the boat must be pointed upstream at angle θ from the perpendicular where sinθ = v_river/v_boat.\nD. The time taken to cross via the shortest path is less than the time taken when the boat points directly across.",
+      "options": ["A. Statement A", "B. Statement B", "C. Statement C", "D. Statement D"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A is correct: pointing straight across gives the maximum possible perpendicular velocity component (equal to the full boat speed), hence minimum crossing time. B is correct: to have a zero-drift (shortest-path) crossing, the boat's upstream component (v_b sinθ) must cancel the current v_r; this requires v_b > v_r, otherwise no angle can achieve zero drift. C is correct: this is exactly the condition sinθ = v_r/v_b derived from resolving the boat's velocity. D is incorrect: the shortest-path crossing uses only the reduced perpendicular component sqrt(v_b^2−v_r^2) < v_b, so it always takes MORE time than heading straight across, not less. Correct options: A, B, C."
+    },
+    {
+      "id": "phy-kin-038",
+      "topicId": "phy-kin-relative-2d",
+      "type": "matching",
+      "difficulty": "hard",
+      "expectedSeconds": 240,
+      "stem": "Rain falls vertically downward with a speed of 10 m/s (relative to the ground). A cyclist rides horizontally with a constant speed v. Match the cyclist's speed in Column I with the angle from the vertical at which the rain appears to fall, as seen by the cyclist, in Column II (use tanθ = v/10).\n\n**Column I**\nP. v = 0 m/s\nQ. v = 5.77 m/s\nR. v = 10 m/s\nS. v = 17.32 m/s\n\n**Column II**\n1. 45°\n2. 30°\n3. 0°\n4. 60°",
+      "options": null,
+      "correct": {"P": "3", "Q": "2", "R": "1", "S": "4"},
+      "tolerance": null,
+      "solution": "The rain falls vertically at 10 m/s (relative to ground). Relative to a cyclist moving horizontally at speed v, the apparent velocity of rain has a horizontal component v (backward relative to cyclist) and vertical component 10 m/s (downward); the angle from the vertical satisfies tanθ = v/10. P: v=0 → tanθ=0 → θ=0° → option 3. Q: v=5.77 m/s → tanθ=0.577=tan30° → θ=30° → option 2. R: v=10 m/s → tanθ=1=tan45° → θ=45° → option 1. S: v=17.32 m/s → tanθ=1.732=tan60° → θ=60° → option 4. Matching: P-3, Q-2, R-1, S-4."
+    },
+    {
+      "id": "phy-kin-039",
+      "topicId": "phy-kin-circular-basics",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "A particle moves in a circle of radius 2 m with a constant angular velocity of 5 rad/s. Find its linear speed.",
+      "options": ["A. 2.5 m/s", "B. 5 m/s", "C. 10 m/s", "D. 20 m/s"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "v = rω = (2 m)(5 rad/s) = 10 m/s. Correct option: C."
+    },
+    {
+      "id": "phy-kin-040",
+      "topicId": "phy-kin-circular-basics",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "A particle undergoes uniform circular motion with speed 4 m/s in a circle of radius 2 m. Find the magnitude of its centripetal acceleration.",
+      "options": ["A. 2 m/s^2", "B. 4 m/s^2", "C. 8 m/s^2", "D. 16 m/s^2"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "a_c = v^2/r = (4)^2/2 = 16/2 = 8 m/s^2. Correct option: C."
+    },
+    {
+      "id": "phy-kin-041",
+      "topicId": "phy-kin-circular-basics",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "A wheel starts from rest and attains an angular velocity of 20 rad/s in 5 s under a constant angular acceleration. Find the angular acceleration, in rad/s^2.",
+      "options": null,
+      "correct": 4,
+      "tolerance": 0.1,
+      "solution": "α = Δω/Δt = (20 rad/s − 0)/5 s = 4 rad/s^2. Answer: 4."
+    },
+    {
+      "id": "phy-kin-042",
+      "topicId": "phy-kin-circular-basics",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "A particle moves in a circle with continuously increasing speed (non-uniform circular motion). Which of the following statements are correct?\n\nA. The particle has both a centripetal (radial) and a tangential component of acceleration.\nB. The net acceleration is directed along the tangent to the circle.\nC. The centripetal acceleration is given by v^2/r at every instant, where v is the instantaneous speed.\nD. The tangential acceleration is responsible for the change in speed of the particle.",
+      "options": ["A. Statement A", "B. Statement B", "C. Statement C", "D. Statement D"],
+      "correct": ["A", "C", "D"],
+      "tolerance": null,
+      "solution": "A is correct: in non-uniform circular motion, speed changes (needs tangential acceleration) and direction changes (needs centripetal acceleration), so both are present. B is incorrect: the net acceleration is the vector sum of the radial and tangential components and, in general, points neither purely along the tangent nor purely along the radius. C is correct: the centripetal acceleration formula v^2/r uses the instantaneous speed v and is valid at every instant, uniform or not. D is correct: only the tangential component of acceleration changes the magnitude (speed) of the velocity; the centripetal component only changes its direction. Correct options: A, C, D."
+    },
+    {
+      "id": "phy-kin-043",
+      "topicId": "phy-kin-circular-basics",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "A fan blade rotates with constant angular speed and completes 5 revolutions in 2 s. If its angular speed is ω = kπ rad/s, find the integer value of k.",
+      "options": null,
+      "correct": 5,
+      "tolerance": null,
+      "solution": "Angular displacement in 5 revolutions = 5 × 2π = 10π rad. Time taken = 2 s. Angular velocity ω = angular displacement/time = 10π/2 = 5π rad/s. Since ω = kπ rad/s, k = 5. Answer: 5."
+    }
+  ]
+}

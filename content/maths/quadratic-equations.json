@@ -1,0 +1,713 @@
+{
+  "chapterId": "maths-quadratic-equations",
+  "subject": "maths",
+  "title": "Quadratic Equations",
+  "topics": [
+    {
+      "topicId": "maths-qe-basics",
+      "title": "Standard Form, Discriminant & Basics",
+      "order": 1,
+      "estimatedMinutes": 35,
+      "prerequisites": [],
+      "lesson": {
+        "objectives": [
+          "Write any quadratic equation in the standard form $ax^2+bx+c=0$, $a\\neq0$",
+          "Compute the discriminant $D=b^2-4ac$ quickly and accurately",
+          "Apply the quadratic formula $x=\\dfrac{-b\\pm\\sqrt{D}}{2a}$ to find roots including surd forms",
+          "Recognize degenerate cases where the leading coefficient can vanish"
+        ],
+        "content": "A quadratic equation in one variable can always be written in **standard form** $ax^2+bx+c=0$, where $a,b,c$ are real numbers and $a\\neq0$ (if $a=0$ the equation degenerates to a linear equation). Every quadratic equation has exactly two roots, counted with multiplicity, in the complex number system.\n\nThe key diagnostic tool is the **discriminant** $D=b^2-4ac$. The roots are given by the quadratic formula:\n$$x=\\dfrac{-b\\pm\\sqrt{D}}{2a}$$\nThis single formula tells us everything about the roots once $a,b,c$ are known: whether they are real or complex, equal or distinct, and their exact values.\n\nFor JEE, you must be fluent in three mechanical skills: (1) rearranging any given equation into standard form before reading off $a,b,c$ (watch for equations not initially written this way, e.g. with terms on both sides), (2) computing $D$ quickly and without sign slips, and (3) using the formula to extract roots, including simplifying surds such as $\\sqrt{12}=2\\sqrt3$. This basic fluency underlies every later topic in this chapter — nature of roots, Vieta's relations, inequalities, and location of roots all begin from this formula.",
+        "workedExample": {
+          "problem": "Solve $2x^2-7x+3=0$ using the quadratic formula.",
+          "solution": "Here $a=2,\\ b=-7,\\ c=3$.\n\n**Step 1 — Discriminant:** $D=b^2-4ac=(-7)^2-4(2)(3)=49-24=25$.\n\n**Step 2 — Apply the formula:** $x=\\dfrac{-(-7)\\pm\\sqrt{25}}{2(2)}=\\dfrac{7\\pm5}{4}$.\n\n**Step 3 — Two roots:** $x=\\dfrac{7+5}{4}=3$ and $x=\\dfrac{7-5}{4}=\\dfrac12$.\n\nSo the roots are $x=3$ and $x=\\dfrac12$."
+        },
+        "jeeTraps": [
+          "Forgetting the condition $a\\neq0$ — treating an equation as quadratic even when a parameter could make the leading coefficient zero, missing the linear-case branch",
+          "Sign errors while computing $b^2-4ac$, especially when $b$ or $c$ is itself negative",
+          "Leaving surds unsimplified or mis-simplifying them (e.g. writing $\\sqrt{50}$ instead of $5\\sqrt2$), which then causes errors in every later step"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-nature-of-roots",
+      "title": "Nature of Roots",
+      "order": 2,
+      "estimatedMinutes": 40,
+      "prerequisites": ["maths-qe-basics"],
+      "lesson": {
+        "objectives": [
+          "Classify roots as real-distinct, real-equal, or complex-conjugate using the sign of $D$",
+          "Distinguish rational roots (perfect-square $D$) from irrational conjugate surd roots",
+          "Recall that complex roots of a real-coefficient quadratic always occur in conjugate pairs",
+          "Convert parameter-based 'nature of roots' conditions into solvable inequalities in the parameter"
+        ],
+        "content": "Once an equation is in standard form $ax^2+bx+c=0$, the sign of the discriminant $D=b^2-4ac$ completely classifies its roots.\n\n- If $D>0$, the roots are **real and distinct**. If in addition $a,b,c$ are rational and $D$ is a perfect square, the roots are rational; if $D>0$ but not a perfect square, the roots are irrational and occur as **conjugate surd pairs** $p+\\sqrt q$ and $p-\\sqrt q$.\n- If $D=0$, the roots are **real and equal**, each equal to $-b/2a$.\n- If $D<0$, the roots are **complex conjugates** $\\alpha\\pm i\\beta$ — for equations with real coefficients, complex roots never occur singly.\n\nThis classification drives a huge fraction of JEE questions: given a family of equations depending on a parameter, you are frequently asked to find the parameter's range so that roots are real, equal, imaginary, or rational. The technique is always the same — write $D$ in terms of the parameter, then solve the resulting inequality or equation.\n\nBe careful with equations where the leading coefficient $a$ itself depends on a parameter: if $a$ can become zero, the whole discriminant analysis needs a separate linear-case check.",
+        "workedExample": {
+          "problem": "Determine the nature of the roots of $x^2+2x+5=0$.",
+          "solution": "**Step 1:** $a=1,\\ b=2,\\ c=5$, so $D=b^2-4ac=4-20=-16$.\n\n**Step 2:** Since $D<0$, the roots are complex conjugates.\n\n**Step 3:** $x=\\dfrac{-2\\pm\\sqrt{-16}}{2}=\\dfrac{-2\\pm4i}{2}=-1\\pm2i$.\n\nThe roots are $-1+2i$ and $-1-2i$, a conjugate pair, as expected."
+        },
+        "jeeTraps": [
+          "Assuming $D\\ge0$ always means 'real and distinct' — forgetting that $D=0$ gives real and *equal* roots, not distinct ones",
+          "Believing complex roots can occur singly — this conjugate-pair rule only holds when all coefficients are real",
+          "Sign errors while expanding $D$ for equations with negative, fractional, or parametric coefficients, leading to a flipped inequality"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-relations",
+      "title": "Relations Between Roots and Coefficients",
+      "order": 3,
+      "estimatedMinutes": 40,
+      "prerequisites": ["maths-qe-basics", "maths-qe-nature-of-roots"],
+      "lesson": {
+        "objectives": [
+          "State Vieta's formulas $\\alpha+\\beta=-b/a$ and $\\alpha\\beta=c/a$",
+          "Form a quadratic equation given its roots, or given symmetric functions of its roots",
+          "Evaluate symmetric expressions such as $\\alpha^2+\\beta^2$, $\\alpha^3+\\beta^3$, $1/\\alpha+1/\\beta$ without solving for the roots",
+          "Use sum/product manipulation as a foundation for common-root and location-of-root problems"
+        ],
+        "content": "For a quadratic $ax^2+bx+c=0$ ($a\\neq0$) with roots $\\alpha,\\beta$, Vieta's formulas give\n$$\\alpha+\\beta=-\\frac{b}{a},\\qquad \\alpha\\beta=\\frac{c}{a}.$$\nThese two numbers completely determine the equation up to a scalar multiple: any quadratic with roots $\\alpha,\\beta$ can be written as $x^2-(\\alpha+\\beta)x+\\alpha\\beta=0$.\n\nJEE problems frequently ask for symmetric functions of the roots — expressions unchanged when $\\alpha$ and $\\beta$ are swapped — without ever solving for the roots individually. Memorise these identities:\n- $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n- $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$\n- $\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)$\n- $\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}$\n\nUsing these, you can evaluate almost any symmetric expression purely from $a,b,c$ — much faster and safer than computing possibly irrational or complex roots explicitly.\n\nConversely, you are often asked to *construct* an equation given information about its roots (double, reciprocal, or shifted roots of another equation) — done by extracting sum and product first, then rebuilding via $x^2-(\\text{sum})x+(\\text{product})=0$. Mastery here is essential for the later topics on common roots and location of roots.",
+        "workedExample": {
+          "problem": "If $\\alpha,\\beta$ are the roots of $x^2-5x+6=0$, find $\\alpha^2+\\beta^2$ and $\\alpha^3+\\beta^3$.",
+          "solution": "**Step 1 — Sum and product:** $\\alpha+\\beta=5$, $\\alpha\\beta=6$.\n\n**Step 2 — $\\alpha^2+\\beta^2$:** $(\\alpha+\\beta)^2-2\\alpha\\beta=25-12=13$.\n\n**Step 3 — $\\alpha^3+\\beta^3$:** $(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=125-3(6)(5)=125-90=35$.\n\nSo $\\alpha^2+\\beta^2=13$ and $\\alpha^3+\\beta^3=35$."
+        },
+        "jeeTraps": [
+          "Sign error: sum of roots is $-b/a$, not $b/a$ — a very common slip under time pressure",
+          "Forgetting to divide by $a$ when $a\\neq1$, i.e. using $b,c$ directly instead of $-b/a,\\,c/a$",
+          "Misremembering the symmetric identities, especially the sign inside $\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)$"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-common-roots",
+      "title": "Common Roots & Transformation of Equations",
+      "order": 4,
+      "estimatedMinutes": 45,
+      "prerequisites": ["maths-qe-relations"],
+      "lesson": {
+        "objectives": [
+          "Apply the proportionality condition $a_1/a_2=b_1/b_2=c_1/c_2$ when two quadratics share both roots",
+          "Derive the common root of two quadratics by elimination when they share exactly one root",
+          "Recall and apply the determinant condition for exactly one common root",
+          "Transform a quadratic into a new equation whose roots are related by a simple rule via substitution"
+        ],
+        "content": "Two distinct quadratics can share zero, one, or two roots. If $a_1x^2+b_1x+c_1=0$ and $a_2x^2+b_2x+c_2=0$ share **both** roots, their coefficients must be proportional: $\\dfrac{a_1}{a_2}=\\dfrac{b_1}{b_2}=\\dfrac{c_1}{c_2}$.\n\nIf they share **exactly one** root $\\alpha$, the standard technique treats the two equations as simultaneous linear equations in $\\alpha^2$ and $\\alpha$ (via elimination), giving the condition\n$$(a_1b_2-a_2b_1)(b_1c_2-b_2c_1)=(a_2c_1-a_1c_2)^2.$$\nIn practice it is often faster and safer to eliminate $\\alpha^2$ directly by subtracting suitable multiples of the two equations to get a linear equation in $\\alpha$, solve for $\\alpha$, and substitute back — this avoids memorising the determinant formula and reduces arithmetic slips.\n\nA related, equally important skill is **transforming** a given equation into a new one whose roots are related to the original by a simple rule: roots increased by a constant, roots doubled, reciprocal roots, squared roots, etc. The method is always substitution: if the new roots are $y=g(\\alpha)$, express $x=g^{-1}(y)$ and substitute into the original equation to get a new equation purely in $y$.",
+        "workedExample": {
+          "problem": "Find the common root of $x^2-3x+2=0$ and $x^2-x-2=0$.",
+          "solution": "**Step 1 — Factor the first equation:** $x^2-3x+2=(x-1)(x-2)=0$, so its roots are $1,2$.\n\n**Step 2 — Factor the second equation:** $x^2-x-2=(x-2)(x+1)=0$, so its roots are $2,-1$.\n\n**Step 3 — Compare:** the only value appearing in both root sets is $x=2$.\n\nSo the common root is $x=2$."
+        },
+        "jeeTraps": [
+          "Misassigning which differences go where in the one-common-root determinant formula, producing a mirrored/incorrect condition",
+          "Assuming a common root exists without verifying it — always confirm by direct substitution or elimination rather than guessing",
+          "Sign or algebra errors when forming the transformed equation, especially the reciprocal substitution $x\\to1/x$ when the constant term could be zero"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-expressions-graphs",
+      "title": "Quadratic Expressions & Graphs",
+      "order": 5,
+      "estimatedMinutes": 40,
+      "prerequisites": ["maths-qe-basics", "maths-qe-nature-of-roots"],
+      "lesson": {
+        "objectives": [
+          "Locate the vertex $\\left(-\\dfrac{b}{2a},-\\dfrac{D}{4a}\\right)$ of a quadratic expression",
+          "Determine whether the parabola opens upward or downward from the sign of $a$",
+          "Relate the sign of $f(x)$ for real $x$ to $a$, $D$, and position relative to the roots",
+          "Find the range of a quadratic expression on all of $\\mathbb{R}$ or on a restricted interval"
+        ],
+        "content": "The graph of $f(x)=ax^2+bx+c$ is a parabola. It opens upward if $a>0$ (has a **minimum**) and downward if $a<0$ (has a **maximum**). The vertex, where this extreme value occurs, is at\n$$x=-\\frac{b}{2a},\\qquad f\\left(-\\frac{b}{2a}\\right)=-\\frac{D}{4a}.$$\nSo the minimum (or maximum) value of the expression is always $-D/4a$.\n\nThe sign of $f(x)$ for real $x$ is tightly linked to $D$ and the roots:\n- If $D<0$, $f(x)$ has the same sign as $a$ for **every** real $x$ (the parabola never touches the x-axis).\n- If $D=0$, $f(x)$ has the same sign as $a$ everywhere except at the single root, where it is zero.\n- If $D>0$ with roots $\\alpha<\\beta$, then $f(x)$ has sign **opposite** to $a$ for $x\\in(\\alpha,\\beta)$ and the **same** sign as $a$ for $x<\\alpha$ or $x>\\beta$.\n\nThese sign rules are the foundation for quadratic inequalities and the wavy-curve method used later. When a JEE question restricts $x$ to a closed interval $[p,q]$ rather than all of $\\mathbb{R}$, always check whether the vertex $-b/2a$ falls inside $[p,q]$ before concluding the range — if it doesn't, the extreme value occurs at an endpoint instead.",
+        "workedExample": {
+          "problem": "Find the minimum value of $f(x)=2x^2-8x+9$.",
+          "solution": "**Step 1:** $a=2>0$, so $f$ has a minimum at $x=-\\dfrac{b}{2a}=\\dfrac{8}{4}=2$.\n\n**Step 2:** $f(2)=2(4)-8(2)+9=8-16+9=1$.\n\n**Check via $-D/4a$:** $D=64-72=-8$, so $-D/4a=8/8=1$. Matches.\n\nThe minimum value of $f(x)$ is $1$."
+        },
+        "jeeTraps": [
+          "Sign error in the vertex formula, e.g. writing $x=b/2a$ and dropping the negative sign",
+          "Confusing 'always positive' ($a>0,D<0$) with 'always negative' ($a<0,D<0$)",
+          "Forgetting to check whether the vertex actually lies inside a restricted domain when asked for the range on a closed interval"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-location-of-roots",
+      "title": "Location of Roots in an Interval",
+      "order": 6,
+      "estimatedMinutes": 50,
+      "prerequisites": ["maths-qe-expressions-graphs", "maths-qe-relations"],
+      "lesson": {
+        "objectives": [
+          "Use $D\\ge0$, sign of $f(k)$, and vertex position to place both roots on one side of a number $k$",
+          "Apply $a\\cdot f(k)<0$ as the condition for $k$ to lie between the roots",
+          "Combine conditions to force both roots of a quadratic to lie inside an interval $(k_1,k_2)$",
+          "Translate a 'location of roots' picture into the correct list of algebraic conditions on a parameter"
+        ],
+        "content": "Many JEE Advanced problems specify where the roots of $f(x)=ax^2+bx+c$ ($a\\neq0$) should lie relative to one or two real numbers, and ask for the resulting range of a parameter. These are solved by combining three checks (assume $a>0$; if $a<0$, multiply through by $-1$ first so the leading coefficient becomes positive):\n\n1. **Discriminant:** $D\\ge0$, so real roots exist.\n2. **Sign of $f$ at the reference point(s) $k$:** since the parabola opens upward, $f(k)>0$ means $k$ lies *outside* the interval between the roots, while $f(k)<0$ means $k$ lies *between* the roots.\n3. **Position of the vertex** $-b/2a$ relative to $k$ (or the interval endpoints), which distinguishes 'both roots greater than $k$' from 'both roots less than $k$' when $f(k)>0$ in both cases.\n\nFor 'both roots lie in $(k_1,k_2)$', you need all of: $D\\ge0$, $f(k_1)>0$, $f(k_2)>0$, and $k_1<-b/2a<k_2$. For 'exactly one root lies in $(k_1,k_2)$', a simple sufficient condition is $f(k_1)\\cdot f(k_2)<0$ (boundary/equal-root cases need separate checking). Always sketch the parabola matching the required picture — it makes the correct list of conditions almost self-evident and prevents missing a case.",
+        "workedExample": {
+          "problem": "Find the values of $m$ for which both roots of $x^2-2mx+m^2-1=0$ lie between $-2$ and $4$.",
+          "solution": "Here $f(x)=x^2-2mx+m^2-1$, $a=1>0$.\n\n**Step 1 — Discriminant:** $D=4m^2-4(m^2-1)=4\\ge0$ always. No restriction.\n\n**Step 2 — $f(-2)>0$:** $f(-2)=4+4m+m^2-1=m^2+4m+3=(m+1)(m+3)>0\\Rightarrow m<-3$ or $m>-1$.\n\n**Step 3 — $f(4)>0$:** $f(4)=16-8m+m^2-1=m^2-8m+15=(m-3)(m-5)>0\\Rightarrow m<3$ or $m>5$.\n\n**Step 4 — Vertex between $-2$ and $4$:** $-b/2a=m$, so we need $-2<m<4$.\n\n**Step 5 — Intersect all conditions within $(-2,4)$:** from Step 2, only $m>-1$ overlaps; combined with Step 3's $m<3$ (since $m>5$ doesn't overlap $(-2,4)$), we get $m\\in(-1,3)$.\n\nSo both roots lie between $-2$ and $4$ exactly when $m\\in(-1,3)$."
+        },
+        "jeeTraps": [
+          "Forgetting to check $D\\ge0$ separately — the $a\\cdot f(k)$ conditions alone do not guarantee the roots are real",
+          "Using the sign condition for $a>0$ without adjusting when $a<0$, instead of first normalising by multiplying through by $-1$",
+          "Omitting the vertex/axis condition when both roots must lie strictly between two numbers, which can let extra invalid parameter values slip through"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-inequalities",
+      "title": "Quadratic Inequalities",
+      "order": 7,
+      "estimatedMinutes": 35,
+      "prerequisites": ["maths-qe-expressions-graphs"],
+      "lesson": {
+        "objectives": [
+          "Solve quadratic inequalities using factorisation and the sign scheme (wavy curve method)",
+          "Correctly flip the inequality when the leading coefficient is negative",
+          "Extend the sign scheme to rational inequalities that reduce to quadratic sign analysis",
+          "Determine parameter conditions for a quadratic to be always positive or always negative"
+        ],
+        "content": "A quadratic inequality such as $ax^2+bx+c>0$ (or $<0,\\ge0,\\le0$) is solved by first finding the roots of $ax^2+bx+c=0$, then applying the sign behaviour from the previous topic:\n\n- If $a>0$ and roots are $\\alpha<\\beta$: the expression is **positive** outside $[\\alpha,\\beta]$ and **negative** inside $(\\alpha,\\beta)$.\n- If $a<0$, it is usually easiest to multiply the whole inequality by $-1$ (remembering to **flip** the inequality sign) so the leading coefficient becomes positive, then apply the rule above.\n\nAlways factor first if possible — the wavy curve (sign scheme) method extends cleanly to rational inequalities like $\\dfrac{(x-\\alpha)(x-\\beta)}{x-\\gamma}\\ge0$: mark all critical points (numerator and denominator zeros) on the number line, determine the sign in the rightmost interval, and alternate signs across each simple root, remembering that points where the **denominator** vanishes are always excluded from the solution set, even if the sign pattern would otherwise include them.\n\nFor problems asking 'for what values of a parameter is $f(x)>0$ for all real $x$', the condition is simply $a>0$ and $D<0$ (or $a<0$ and $D<0$ for 'always negative').",
+        "workedExample": {
+          "problem": "Solve $x^2-5x+6\\le0$.",
+          "solution": "**Step 1 — Factor:** $x^2-5x+6=(x-2)(x-3)$.\n\n**Step 2 — Roots:** $x=2,3$; since $a=1>0$, the expression is $\\le0$ between (and including) the roots.\n\n**Step 3 — Solution:** $x\\in[2,3]$."
+        },
+        "jeeTraps": [
+          "Forgetting to flip the inequality sign when multiplying by $-1$ to make the leading coefficient positive",
+          "Including or excluding endpoints incorrectly — $\\le/\\ge$ include the roots, $</>$ exclude them",
+          "In rational inequalities, forgetting that a value making the denominator zero must always be excluded, even where the sign pattern seems to satisfy the inequality"
+        ]
+      }
+    },
+    {
+      "topicId": "maths-qe-reducible",
+      "title": "Equations Reducible to Quadratic Form",
+      "order": 8,
+      "estimatedMinutes": 40,
+      "prerequisites": ["maths-qe-basics"],
+      "lesson": {
+        "objectives": [
+          "Identify a repeated expression that allows substitution into a quadratic in a new variable $t$",
+          "Solve exponential and biquadratic equations reducible to quadratic form",
+          "Respect the domain restriction on $t$ (e.g. $t\\ge0$, $t>0$, $|t|\\le1$) before back-substituting",
+          "Discard extraneous solutions that arise from ignoring the substituted variable's natural domain"
+        ],
+        "content": "Many equations that look unfamiliar are secretly quadratics in disguise. The standard strategy: spot a repeated expression, substitute a single variable $t$ for it, solve the resulting quadratic in $t$, then translate back to $x$ — carefully respecting any domain restriction that $t$ must satisfy.\n\nCommon patterns:\n- **Biquadratic-type:** $Ax^4+Bx^2+C=0$ becomes a quadratic in $t=x^2$ (note $t\\ge0$).\n- **Exponential:** $A\\cdot a^{2x}+B\\cdot a^x+C=0$ becomes quadratic in $t=a^x$ (note $t>0$ always, since an exponential is never zero or negative — this eliminates spurious negative roots for $t$ immediately).\n- **Reciprocal-type:** equations involving both $x$ and $1/x$, such as $x+\\dfrac1x=k$, handled by substitution $t=x+\\dfrac1x$ (with $|t|\\ge2$ for real $x\\neq0$) or by clearing denominators directly.\n- **Trigonometric-quadratic hybrids:** e.g. $2\\sin^2\\theta-3\\sin\\theta+1=0$ becomes quadratic in $t=\\sin\\theta$ (note $-1\\le t\\le1$).\n\nThe single most common source of error is forgetting to check the domain of $t$ after solving the quadratic — a root of the quadratic in $t$ that violates $t$'s natural domain (e.g. $t<0$ for an exponential, or $|t|>1$ for $\\sin\\theta$) must be discarded before back-substituting for $x$.",
+        "workedExample": {
+          "problem": "Solve $4^x-3\\cdot2^x-4=0$.",
+          "solution": "**Step 1 — Substitute:** let $t=2^x$ (so $t>0$). Since $4^x=(2^x)^2=t^2$, the equation becomes $t^2-3t-4=0$.\n\n**Step 2 — Factor:** $(t-4)(t+1)=0\\Rightarrow t=4$ or $t=-1$.\n\n**Step 3 — Domain check:** $t=2^x>0$, so $t=-1$ is rejected.\n\n**Step 4 — Back-substitute:** $t=4\\Rightarrow2^x=4\\Rightarrow x=2$.\n\n**Verify:** $4^2-3\\cdot2^2-4=16-12-4=0$. ✓\n\nSo $x=2$ is the only solution."
+        },
+        "jeeTraps": [
+          "Forgetting the domain of the substituted variable (e.g. $t=a^x>0$, $t=x^2\\ge0$) and keeping extraneous negative or out-of-range roots",
+          "Not verifying that back-substituted $x$-values satisfy the original equation's domain (e.g. logarithm arguments must stay positive)",
+          "Mishandling equations with both $x$ and $1/x$ — forgetting to exclude $x=0$ or making an algebra slip in the $t=x+1/x$ substitution"
+        ]
+      }
+    }
+  ],
+  "questionPool": [
+    {
+      "id": "mth-qe-001",
+      "topicId": "maths-qe-basics",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "What is the discriminant of the quadratic equation $3x^2-5x+2=0$?",
+      "options": ["A. 1", "B. -1", "C. 49", "D. 7"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Here $a=3,\\ b=-5,\\ c=2$.\n\n$D=b^2-4ac=(-5)^2-4(3)(2)=25-24=1$.\n\nThe discriminant is $1$, so the answer is **A**."
+    },
+    {
+      "id": "mth-qe-002",
+      "topicId": "maths-qe-basics",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "The roots of $x^2-(\\sqrt3+1)x+\\sqrt3=0$ are:",
+      "options": ["A. $1,\\ \\sqrt3$", "B. $-1,\\ -\\sqrt3$", "C. $1,\\ -\\sqrt3$", "D. $\\sqrt3,\\ 2$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Try $x=1$: $1-(\\sqrt3+1)(1)+\\sqrt3=1-\\sqrt3-1+\\sqrt3=0$. So $x=1$ is a root.\n\nSince product of roots $=\\sqrt3/1=\\sqrt3$, the other root is $\\sqrt3/1=\\sqrt3$.\n\nCheck sum: $1+\\sqrt3=\\sqrt3+1$ ✓ (matches $-b/a$).\n\nSo the roots are $1$ and $\\sqrt3$ — option **A**."
+    },
+    {
+      "id": "mth-qe-003",
+      "topicId": "maths-qe-basics",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "The quadratic equation whose roots are $3+2\\sqrt2$ and $3-2\\sqrt2$ is:",
+      "options": ["A. $x^2-6x+1=0$", "B. $x^2+6x+1=0$", "C. $x^2-6x-1=0$", "D. $x^2-x+6=0$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Sum of roots $=(3+2\\sqrt2)+(3-2\\sqrt2)=6$.\n\nProduct of roots $=(3)^2-(2\\sqrt2)^2=9-8=1$.\n\nEquation: $x^2-(\\text{sum})x+(\\text{product})=0 \\Rightarrow x^2-6x+1=0$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-004",
+      "topicId": "maths-qe-basics",
+      "type": "numerical",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "Find the discriminant of the quadratic equation $4x^2-12x+9=0$.",
+      "options": null,
+      "correct": 0,
+      "tolerance": 0.01,
+      "solution": "$a=4,\\ b=-12,\\ c=9$.\n\n$D=b^2-4ac=144-4(4)(9)=144-144=0$.\n\nThe discriminant is $0$ (this equation has real, equal roots, both equal to $3/2$)."
+    },
+    {
+      "id": "mth-qe-005",
+      "topicId": "maths-qe-basics",
+      "type": "numerical",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "If $x=2$ is a root of $3x^2-2x+p=0$, find the value of $p$.",
+      "options": null,
+      "correct": -8,
+      "tolerance": 0.01,
+      "solution": "Substitute $x=2$: $3(2)^2-2(2)+p=0 \\Rightarrow 12-4+p=0 \\Rightarrow p=-8$."
+    },
+    {
+      "id": "mth-qe-006",
+      "topicId": "maths-qe-nature-of-roots",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "The roots of $2x^2-3x+5=0$ are:",
+      "options": ["A. Real and equal", "B. Real and distinct", "C. Complex conjugate", "D. Rational and distinct"],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "$D=b^2-4ac=(-3)^2-4(2)(5)=9-40=-31<0$.\n\nSince $D<0$, the roots are complex conjugates. Answer: **C**."
+    },
+    {
+      "id": "mth-qe-007",
+      "topicId": "maths-qe-nature-of-roots",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "For what value(s) of $k$ does $x^2-kx+9=0$ have equal roots?",
+      "options": ["A. $k=\\pm6$", "B. $k=9$", "C. $k=\\pm3$", "D. $k=0$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "For equal roots, $D=0$: $(-k)^2-4(1)(9)=0 \\Rightarrow k^2-36=0 \\Rightarrow k=\\pm6$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-008",
+      "topicId": "maths-qe-nature-of-roots",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "For the equation $3x^2+(2m-5)x+2=0$ to have real roots, which of the following values of $m$ are valid?",
+      "options": ["A. $m=5$", "B. $m=0$", "C. $m=2$", "D. $m=-1$"],
+      "correct": ["A", "B", "D"],
+      "tolerance": null,
+      "solution": "Real roots require $D=(2m-5)^2-4(3)(2)\\ge0 \\Rightarrow (2m-5)^2\\ge24$.\n\n- $m=5$: $2(5)-5=5$, $5^2=25\\ge24$ ✓\n- $m=0$: $2(0)-5=-5$, $(-5)^2=25\\ge24$ ✓\n- $m=2$: $2(2)-5=-1$, $(-1)^2=1<24$ ✗\n- $m=-1$: $2(-1)-5=-7$, $(-7)^2=49\\ge24$ ✓\n\nValid values: **A, B, D**."
+    },
+    {
+      "id": "mth-qe-009",
+      "topicId": "maths-qe-nature-of-roots",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "Which of the following equations have real and distinct roots?\n\nA. $x^2-4x+4=0$\n\nB. $2x^2-5x+2=0$\n\nC. $x^2+x+1=0$\n\nD. $3x^2-2x-1=0$",
+      "options": ["A. $x^2-4x+4=0$", "B. $2x^2-5x+2=0$", "C. $x^2+x+1=0$", "D. $3x^2-2x-1=0$"],
+      "correct": ["B", "D"],
+      "tolerance": null,
+      "solution": "A: $D=16-16=0$ — real but **equal**, not distinct. Excluded.\n\nB: $D=25-16=9>0$ — real and distinct (roots $2$ and $0.5$). Included.\n\nC: $D=1-4=-3<0$ — complex. Excluded.\n\nD: $D=4+12=16>0$ — real and distinct (roots $1$ and $-1/3$). Included.\n\nReal and distinct: **B, D**."
+    },
+    {
+      "id": "mth-qe-010",
+      "topicId": "maths-qe-nature-of-roots",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "Find the number of integer values of $a$ for which the equation $x^2-(a-2)x+a^2=0$ has real roots.",
+      "options": null,
+      "correct": 3,
+      "tolerance": null,
+      "solution": "Real roots require $D\\ge0$: $(a-2)^2-4a^2\\ge0 \\Rightarrow a^2-4a+4-4a^2\\ge0 \\Rightarrow -3a^2-4a+4\\ge0 \\Rightarrow 3a^2+4a-4\\le0$.\n\nRoots of $3a^2+4a-4=0$: $a=\\dfrac{-4\\pm\\sqrt{16+48}}{6}=\\dfrac{-4\\pm8}{6}$, giving $a=\\dfrac23$ or $a=-2$.\n\nSince the coefficient of $a^2$ is positive, $3a^2+4a-4\\le0$ for $a\\in[-2,\\ 2/3]$.\n\nInteger values in this range: $-2,-1,0$ — that's **3** integers."
+    },
+    {
+      "id": "mth-qe-011",
+      "topicId": "maths-qe-nature-of-roots",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 200,
+      "stem": "Match the discriminant condition in Column I (for a quadratic with rational coefficients) with the correct description of its roots in Column II.\n\n**Column I**\n\nP. $D>0$ and a perfect square\n\nQ. $D=0$\n\nR. $D<0$\n\nS. $D>0$ and not a perfect square\n\n**Column II**\n\n1. Real, equal roots\n\n2. Complex conjugate roots\n\n3. Rational and unequal roots\n\n4. Irrational conjugate roots",
+      "options": null,
+      "correct": {"P": "3", "Q": "1", "R": "2", "S": "4"},
+      "tolerance": null,
+      "solution": "P: $D>0$ and a perfect square $\\Rightarrow$ $\\sqrt D$ is rational $\\Rightarrow$ roots are rational and unequal — matches **3**.\n\nQ: $D=0$ $\\Rightarrow$ both roots equal $-b/2a$ — matches **1**.\n\nR: $D<0$ $\\Rightarrow$ roots are complex conjugates — matches **2**.\n\nS: $D>0$ but not a perfect square $\\Rightarrow \\sqrt D$ is an irrational surd $\\Rightarrow$ roots are irrational conjugate surds — matches **4**.\n\nFinal mapping: P-3, Q-1, R-2, S-4."
+    },
+    {
+      "id": "mth-qe-012",
+      "topicId": "maths-qe-relations",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 65,
+      "stem": "For the equation $3x^2-9x+4=0$, the sum and product of the roots are respectively:",
+      "options": ["A. sum $=3$, product $=4/3$", "B. sum $=-3$, product $=-4/3$", "C. sum $=9$, product $=4$", "D. sum $=3$, product $=-4/3$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Sum $=-b/a=-(-9)/3=3$.\n\nProduct $=c/a=4/3$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-013",
+      "topicId": "maths-qe-relations",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "If $\\alpha,\\beta$ are the roots of $x^2-6x+8=0$, find $\\alpha^2+\\beta^2$.",
+      "options": ["A. 20", "B. 36", "C. 16", "D. 4"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Sum $\\alpha+\\beta=6$, product $\\alpha\\beta=8$.\n\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=36-16=20$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-014",
+      "topicId": "maths-qe-relations",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "If $\\alpha,\\beta$ are the roots of $2x^2-3x-5=0$, find the value of $\\alpha^3+\\beta^3$.",
+      "options": null,
+      "correct": 14.625,
+      "tolerance": 0.01,
+      "solution": "Sum $=\\alpha+\\beta=3/2$, product $=\\alpha\\beta=-5/2$.\n\n$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=\\left(\\dfrac32\\right)^3-3\\left(-\\dfrac52\\right)\\left(\\dfrac32\\right)$\n\n$=\\dfrac{27}{8}+\\dfrac{45}{4}=\\dfrac{27}{8}+\\dfrac{90}{8}=\\dfrac{117}{8}=14.625$."
+    },
+    {
+      "id": "mth-qe-015",
+      "topicId": "maths-qe-relations",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "Find the value of $k$ for which the sum of the roots of $kx^2+(2k+1)x+(k-1)=0$ equals $1$.",
+      "options": null,
+      "correct": -0.3333,
+      "tolerance": 0.01,
+      "solution": "Sum of roots $=-\\dfrac{2k+1}{k}$. Set this equal to $1$:\n\n$-\\dfrac{2k+1}{k}=1 \\Rightarrow -(2k+1)=k \\Rightarrow -2k-1=k \\Rightarrow -1=3k \\Rightarrow k=-\\dfrac13\\approx-0.3333$.\n\n**Check:** with $k=-1/3$, the equation becomes $-\\dfrac13x^2+\\dfrac13x-\\dfrac43=0$, i.e. (multiplying by $-3$) $x^2-x+4=0$, whose sum of roots is $1$. ✓"
+    },
+    {
+      "id": "mth-qe-016",
+      "topicId": "maths-qe-relations",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "Let $\\alpha,\\beta$ be the roots of $x^2-px+q=0$. Which of the following identities are correct?",
+      "options": ["A. $\\alpha^2+\\beta^2=p^2-2q$", "B. $(\\alpha-\\beta)^2=p^2-4q$", "C. $\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac pq$ (for $q\\neq0$)", "D. $\\alpha^3+\\beta^3=p^3+3pq$"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "Here sum $=\\alpha+\\beta=p$, product $=\\alpha\\beta=q$.\n\nA: $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=p^2-2q$ — correct.\n\nB: $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=p^2-4q$ — correct.\n\nC: $\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac pq$ — correct.\n\nD: $\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=p^3-3pq$, **not** $p^3+3pq$ — incorrect.\n\nCorrect statements: **A, B, C**."
+    },
+    {
+      "id": "mth-qe-017",
+      "topicId": "maths-qe-relations",
+      "type": "matching",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "Let $\\alpha,\\beta$ be the roots of $x^2-7x+12=0$. Match the expression in Column I with its numerical value in Column II.\n\n**Column I**\n\nP. $\\alpha+\\beta$\n\nQ. $\\alpha\\beta$\n\nR. $\\alpha^2+\\beta^2$\n\nS. $\\dfrac1\\alpha+\\dfrac1\\beta$\n\n**Column II**\n\n1. 7\n\n2. 12\n\n3. 25\n\n4. 7/12",
+      "options": null,
+      "correct": {"P": "1", "Q": "2", "R": "3", "S": "4"},
+      "tolerance": null,
+      "solution": "The roots of $x^2-7x+12=0$ are $3$ and $4$ (since $(x-3)(x-4)=0$).\n\nP: $\\alpha+\\beta=7$ — matches **1**.\n\nQ: $\\alpha\\beta=12$ — matches **2**.\n\nR: $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=49-24=25$ — matches **3**.\n\nS: $\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=\\dfrac{7}{12}$ — matches **4**.\n\nFinal mapping: P-1, Q-2, R-3, S-4."
+    },
+    {
+      "id": "mth-qe-018",
+      "topicId": "maths-qe-common-roots",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "The equations $x^2+ax+b=0$ and $x^2+bx+a=0$ ($a\\neq b$) have a common root. Find the value of $a+b$.",
+      "options": ["A. $-1$", "B. $1$", "C. $0$", "D. $2$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Subtract the two equations: $(a-b)x+(b-a)=0 \\Rightarrow (a-b)x-(a-b)=0 \\Rightarrow (a-b)(x-1)=0$.\n\nSince $a\\neq b$, we must have $x=1$.\n\nSubstitute $x=1$ into the first equation: $1+a+b=0 \\Rightarrow a+b=-1$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-019",
+      "topicId": "maths-qe-common-roots",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 75,
+      "stem": "The equations $2x^2-7x+3=0$ and $x^2+px+3=0$ have a common root $x=3$. Find $p$.",
+      "options": ["A. $-4$", "B. $-6.5$", "C. $4$", "D. $6.5$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Substitute $x=3$ into the second equation: $9+3p+3=0 \\Rightarrow 3p=-12 \\Rightarrow p=-4$.\n\n(Check: $2(9)-7(3)+3=18-21+3=0$, so $x=3$ is indeed a root of the first equation.)\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-020",
+      "topicId": "maths-qe-common-roots",
+      "type": "mcq_single",
+      "difficulty": "hard",
+      "expectedSeconds": 180,
+      "stem": "For what value(s) of $k$ do $x^2-kx-21=0$ and $x^2-3kx+35=0$ have one common root?",
+      "options": ["A. $k=\\pm4$", "B. $k=\\pm7$", "C. $k=4$ only", "D. $k=-4$ only"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Let the common root be $\\alpha$. Then:\n\n$\\alpha^2-k\\alpha-21=0$ ...(1)\n\n$\\alpha^2-3k\\alpha+35=0$ ...(2)\n\nSubtract (2) from (1): $2k\\alpha-56=0 \\Rightarrow k\\alpha=28$.\n\nFrom (1): $\\alpha^2=k\\alpha+21=28+21=49 \\Rightarrow \\alpha=\\pm7$.\n\nIf $\\alpha=7$: $k=28/7=4$. If $\\alpha=-7$: $k=28/(-7)=-4$.\n\n**Verify $k=4,\\alpha=7$:** (1): $49-28-21=0$ ✓; (2): $49-84+35=0$ ✓.\n\n**Verify $k=-4,\\alpha=-7$:** (1): $49-28-21=0$ ✓; (2): $49-84+35=0$ ✓.\n\nSo $k=\\pm4$. Answer: **A**."
+    },
+    {
+      "id": "mth-qe-021",
+      "topicId": "maths-qe-common-roots",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "Find the sum of all possible values of $a$ for which $3x^2+2x-1=0$ and $6x^2-x+a=0$ have at least one common root.",
+      "options": null,
+      "correct": -7.3333,
+      "tolerance": 0.01,
+      "solution": "Factor the first equation: $3x^2+2x-1=(3x-1)(x+1)=0$, so its roots are $x=1/3$ and $x=-1$.\n\n**Case $x=1/3$:** $6\\left(\\dfrac19\\right)-\\dfrac13+a=0 \\Rightarrow \\dfrac23-\\dfrac13+a=0 \\Rightarrow a=-\\dfrac13$.\n\n**Case $x=-1$:** $6(1)-(-1)+a=0 \\Rightarrow 6+1+a=0 \\Rightarrow a=-7$.\n\nSum of all possible values of $a$: $-\\dfrac13+(-7)=-\\dfrac{22}{3}\\approx-7.3333$."
+    },
+    {
+      "id": "mth-qe-022",
+      "topicId": "maths-qe-common-roots",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "If $\\alpha$ and $\\beta$ are the roots of $x^2-5x+6=0$, and a new equation is formed with roots $\\alpha+1$ and $\\beta+1$, find the sum of the roots of the new equation.",
+      "options": null,
+      "correct": 7,
+      "tolerance": null,
+      "solution": "$x^2-5x+6=(x-2)(x-3)=0$, so $\\alpha=2,\\ \\beta=3$.\n\nNew roots: $\\alpha+1=3$ and $\\beta+1=4$.\n\nSum of new roots $=3+4=7$."
+    },
+    {
+      "id": "mth-qe-023",
+      "topicId": "maths-qe-expressions-graphs",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 65,
+      "stem": "Find the minimum value of $f(x)=x^2-6x+11$.",
+      "options": ["A. 2", "B. -2", "C. 11", "D. 0"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "$a=1>0$, vertex at $x=-b/2a=3$.\n\n$f(3)=9-18+11=2$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-024",
+      "topicId": "maths-qe-expressions-graphs",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "For which values of $a$ is $ax^2-4x+a$ always positive for all real $x$?",
+      "options": ["A. $a>2$", "B. $a<-2$", "C. $-2<a<2$", "D. $a>0$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "'Always positive' requires $a>0$ and $D<0$.\n\n$D=(-4)^2-4(a)(a)=16-4a^2<0 \\Rightarrow a^2>4 \\Rightarrow a>2$ or $a<-2$.\n\nCombined with $a>0$: only $a>2$ works.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-025",
+      "topicId": "maths-qe-expressions-graphs",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "The graph of $y=-2x^2+4x-5$ opens ______ and has a maximum value of ______.",
+      "options": ["A. downward, $-3$", "B. upward, $-3$", "C. downward, $3$", "D. upward, $5$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "$a=-2<0$, so the parabola opens **downward** and has a maximum.\n\nVertex at $x=-b/2a=-4/(-4)=1$.\n\n$y(1)=-2(1)+4(1)-5=-2+4-5=-3$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-026",
+      "topicId": "maths-qe-expressions-graphs",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "Consider $f(x)=x^2-5x+6$. Which of the following statements are true?",
+      "options": ["A. $f(x)<0$ for all $x\\in(2,3)$", "B. $f(x)>0$ for $x<2$ or $x>3$", "C. The minimum value of $f(x)$ is $-0.25$", "D. $f(x)=0$ only at $x=2$"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "$f(x)=x^2-5x+6=(x-2)(x-3)$, roots $2,3$, $a=1>0$.\n\nA: Between the roots, sign is opposite to $a$, so $f(x)<0$ on $(2,3)$ — true.\n\nB: Outside the roots, sign matches $a$, so $f(x)>0$ for $x<2$ or $x>3$ — true.\n\nC: Vertex at $x=2.5$: $f(2.5)=6.25-12.5+6=-0.25$ — true.\n\nD: $f(x)=0$ at both $x=2$ and $x=3$, not only $x=2$ — false.\n\nTrue statements: **A, B, C**."
+    },
+    {
+      "id": "mth-qe-027",
+      "topicId": "maths-qe-expressions-graphs",
+      "type": "numerical",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "Find the minimum value of $f(x)=3x^2-12x+7$ for $x\\in\\mathbb{R}$.",
+      "options": null,
+      "correct": -5,
+      "tolerance": 0.01,
+      "solution": "$a=3>0$, vertex at $x=-b/2a=12/6=2$.\n\n$f(2)=3(4)-12(2)+7=12-24+7=-5$.\n\nMinimum value is $-5$."
+    },
+    {
+      "id": "mth-qe-028",
+      "topicId": "maths-qe-location-of-roots",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 130,
+      "stem": "Find the range of $k$ for which both roots of $x^2-2x+k=0$ are less than $3$.",
+      "options": ["A. $-3<k\\le1$", "B. $k\\le1$", "C. $k>-3$", "D. $-3<k<1$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "$f(x)=x^2-2x+k$, $a=1>0$.\n\n**$D\\ge0$:** $4-4k\\ge0 \\Rightarrow k\\le1$.\n\n**$f(3)>0$:** $9-6+k=3+k>0 \\Rightarrow k>-3$.\n\n**Vertex $<3$:** $-b/2a=1<3$ — always true, no extra restriction.\n\nCombining: $-3<k\\le1$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-029",
+      "topicId": "maths-qe-location-of-roots",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "For which of the following values of $k$ do both roots of $x^2-4x+k=0$ lie in the open interval $(-1,3)$?",
+      "options": ["A. $k=3.5$", "B. $k=4$", "C. $k=3$", "D. $k=4.5$"],
+      "correct": ["A", "B"],
+      "tolerance": null,
+      "solution": "$f(x)=x^2-4x+k$, $a=1>0$. Conditions: $D\\ge0$, $f(-1)>0$, $f(3)>0$, and vertex $-b/2a=2\\in(-1,3)$ (always true here).\n\n$D\\ge0$: $16-4k\\ge0 \\Rightarrow k\\le4$.\n\n$f(-1)=1+4+k=5+k>0 \\Rightarrow k>-5$.\n\n$f(3)=9-12+k=k-3>0 \\Rightarrow k>3$.\n\nCombined: $3<k\\le4$.\n\n- $k=3.5$: in $(3,4]$ ✓ (roots $\\approx1.29,2.71$, both in $(-1,3)$)\n- $k=4$: boundary, $D=0$, double root at $x=2\\in(-1,3)$ ✓\n- $k=3$: excluded (strict inequality $k>3$ fails); actual roots are $1,3$ — root $x=3$ is not strictly inside $(-1,3)$\n- $k=4.5$: $D=16-18=-2<0$, no real roots ✗\n\nCorrect: **A, B**."
+    },
+    {
+      "id": "mth-qe-030",
+      "topicId": "maths-qe-location-of-roots",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "For the equation $2x^2-3x+k=0$, for which of the following values of $k$ does the number $1$ lie strictly between the two roots?",
+      "options": ["A. $k=0$", "B. $k=0.5$", "C. $k=1$", "D. $k=2$"],
+      "correct": ["A", "B"],
+      "tolerance": null,
+      "solution": "For $1$ to lie between the roots (with $a=2>0$), we need $f(1)<0$, where $f(x)=2x^2-3x+k$.\n\n$f(1)=2-3+k=k-1$.\n\n- $k=0$: $f(1)=-1<0$ ✓ ($D=9-0=9>0$, real distinct roots with $1$ between them)\n- $k=0.5$: $f(1)=-0.5<0$ ✓ ($D=9-4=5>0$)\n- $k=1$: $f(1)=0$ — $x=1$ is itself a root, not strictly between the roots ✗\n- $k=2$: $f(1)=1>0$; in fact $D=9-16=-7<0$, no real roots at all ✗\n\nCorrect: **A, B**."
+    },
+    {
+      "id": "mth-qe-031",
+      "topicId": "maths-qe-location-of-roots",
+      "type": "matching",
+      "difficulty": "hard",
+      "expectedSeconds": 240,
+      "stem": "For $f(x)=ax^2+bx+c$ with $a>0$, match the root-location requirement in Column I with the correct set of conditions in Column II.\n\n**Column I**\n\nP. Both roots greater than $k$\n\nQ. Both roots less than $k$\n\nR. $k$ lies between the roots\n\nS. Both roots lie in $(k_1,k_2)$\n\n**Column II**\n\n1. $f(k)<0$\n\n2. $f(k)>0$ and $-b/2a>k$ and $D\\ge0$\n\n3. $f(k)>0$ and $-b/2a<k$ and $D\\ge0$\n\n4. $f(k_1)>0$, $f(k_2)>0$, $k_1<-b/2a<k_2$, and $D\\ge0$",
+      "options": null,
+      "correct": {"P": "2", "Q": "3", "R": "1", "S": "4"},
+      "tolerance": null,
+      "solution": "P: both roots $>k$ needs the parabola (opening up) to cross the axis to the right of $k$: $f(k)>0$, vertex $-b/2a>k$, and real roots ($D\\ge0$) — matches **2**.\n\nQ: both roots $<k$ needs $f(k)>0$, vertex $-b/2a<k$, $D\\ge0$ — matches **3**.\n\nR: $k$ between the roots needs the parabola to dip below the axis at $k$: $f(k)<0$ — matches **1**.\n\nS: both roots inside $(k_1,k_2)$ needs $f(k_1)>0$, $f(k_2)>0$, vertex between $k_1$ and $k_2$, and $D\\ge0$ — matches **4**.\n\nFinal mapping: P-2, Q-3, R-1, S-4."
+    },
+    {
+      "id": "mth-qe-032",
+      "topicId": "maths-qe-location-of-roots",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 200,
+      "stem": "The equation $x^2-2kx+k^2-4=0$ has roots $k+2$ and $k-2$. Match the root-location condition in Column I with the corresponding range of $k$ in Column II.\n\n**Column I**\n\nP. Both roots positive\n\nQ. Both roots negative\n\nR. Roots are of opposite sign\n\nS. Exactly one root equals zero\n\n**Column II**\n\n1. $k>2$\n\n2. $k<-2$\n\n3. $-2<k<2$\n\n4. $k=2$ or $k=-2$",
+      "options": null,
+      "correct": {"P": "1", "Q": "2", "R": "3", "S": "4"},
+      "tolerance": null,
+      "solution": "The roots are $k+2$ (larger) and $k-2$ (smaller).\n\nP: Both positive requires the smaller root $>0$: $k-2>0 \\Rightarrow k>2$ — matches **1**.\n\nQ: Both negative requires the larger root $<0$: $k+2<0 \\Rightarrow k<-2$ — matches **2**.\n\nR: Opposite signs means $0$ lies between them: $k-2<0<k+2 \\Rightarrow -2<k<2$ — matches **3**.\n\nS: One root is zero: $k+2=0$ or $k-2=0 \\Rightarrow k=-2$ or $k=2$ — matches **4**.\n\nFinal mapping: P-1, Q-2, R-3, S-4."
+    },
+    {
+      "id": "mth-qe-033",
+      "topicId": "maths-qe-inequalities",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 65,
+      "stem": "Solve $x^2-x-6<0$.",
+      "options": ["A. $(-2,3)$", "B. $(-\\infty,-2)\\cup(3,\\infty)$", "C. $[-2,3]$", "D. $(2,-3)$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Factor: $x^2-x-6=(x-3)(x+2)$. Roots: $-2,3$; $a=1>0$.\n\nSince the inequality is $<0$, the solution is between the roots: $x\\in(-2,3)$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-034",
+      "topicId": "maths-qe-inequalities",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "Solve $-x^2+5x-6\\ge0$.",
+      "options": ["A. $[2,3]$", "B. $(-\\infty,2]\\cup[3,\\infty)$", "C. $(2,3)$", "D. $[-3,-2]$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Multiply by $-1$ and flip the inequality: $x^2-5x+6\\le0$.\n\nFactor: $(x-2)(x-3)\\le0$. Roots $2,3$, $a=1>0$, so the solution is between (and including) the roots.\n\n$x\\in[2,3]$. Answer: **A**."
+    },
+    {
+      "id": "mth-qe-035",
+      "topicId": "maths-qe-inequalities",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "Find the number of integer values of $x$ satisfying $x^2-7x+10\\le0$.",
+      "options": null,
+      "correct": 4,
+      "tolerance": null,
+      "solution": "Factor: $x^2-7x+10=(x-2)(x-5)$. Since $a=1>0$, $(x-2)(x-5)\\le0$ for $x\\in[2,5]$.\n\nInteger values in $[2,5]$: $2,3,4,5$ — that's **4** values."
+    },
+    {
+      "id": "mth-qe-036",
+      "topicId": "maths-qe-inequalities",
+      "type": "integer",
+      "difficulty": "hard",
+      "expectedSeconds": 210,
+      "stem": "Find the number of integer values of $x$ satisfying $2x^2-x-15\\le0$.",
+      "options": null,
+      "correct": 6,
+      "tolerance": null,
+      "solution": "$D=(-1)^2-4(2)(-15)=1+120=121$, $\\sqrt D=11$.\n\nRoots: $x=\\dfrac{1\\pm11}{4}$, giving $x=3$ and $x=-2.5$.\n\nSince $a=2>0$, $2x^2-x-15\\le0$ for $x\\in[-2.5,3]$.\n\nInteger values in $[-2.5,3]$: $-2,-1,0,1,2,3$ — that's **6** values."
+    },
+    {
+      "id": "mth-qe-037",
+      "topicId": "maths-qe-inequalities",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "The inequality $3x^2-11x+6>0$ has solution set $x<a$ or $x>b$ (with $a<b$). Find the value of $b-a$.",
+      "options": null,
+      "correct": 2.3333,
+      "tolerance": 0.01,
+      "solution": "$D=(-11)^2-4(3)(6)=121-72=49$, $\\sqrt D=7$.\n\nRoots: $x=\\dfrac{11\\pm7}{6}$, giving $x=3$ and $x=\\dfrac{4}{6}=\\dfrac23$.\n\nSince $a=3>0$, the inequality $>0$ holds outside the roots: $x<\\dfrac23$ or $x>3$.\n\nSo $a=\\dfrac23,\\ b=3$, and $b-a=3-\\dfrac23=\\dfrac73\\approx2.3333$."
+    },
+    {
+      "id": "mth-qe-038",
+      "topicId": "maths-qe-reducible",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 65,
+      "stem": "Solve $x^4-13x^2+36=0$.",
+      "options": ["A. $x=\\pm2,\\pm3$", "B. $x=\\pm2$ only", "C. $x=\\pm3$ only", "D. $x=2,3$ only"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Let $t=x^2$. Then $t^2-13t+36=0 \\Rightarrow (t-4)(t-9)=0 \\Rightarrow t=4$ or $t=9$.\n\n$t=4 \\Rightarrow x=\\pm2$; $t=9 \\Rightarrow x=\\pm3$. Both are valid since $t\\ge0$ in both cases.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-039",
+      "topicId": "maths-qe-reducible",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "Solve $9^x-4\\cdot3^x+3=0$.",
+      "options": ["A. $x=0,1$", "B. $x=1,3$", "C. $x=0,3$", "D. $x=-1,1$"],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "Let $t=3^x$ (so $t>0$). Since $9^x=(3^x)^2=t^2$, the equation becomes $t^2-4t+3=0 \\Rightarrow (t-1)(t-3)=0$.\n\n$t=1 \\Rightarrow 3^x=1 \\Rightarrow x=0$. $t=3 \\Rightarrow 3^x=3 \\Rightarrow x=1$. Both satisfy $t>0$.\n\nAnswer: **A**."
+    },
+    {
+      "id": "mth-qe-040",
+      "topicId": "maths-qe-reducible",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "If $x+\\dfrac1x=\\dfrac52$, find the value of $x^2+\\dfrac{1}{x^2}$.",
+      "options": null,
+      "correct": 4.25,
+      "tolerance": 0.01,
+      "solution": "Square both sides: $\\left(x+\\dfrac1x\\right)^2=x^2+2+\\dfrac1{x^2}=\\left(\\dfrac52\\right)^2=\\dfrac{25}{4}$.\n\nSo $x^2+\\dfrac1{x^2}=\\dfrac{25}{4}-2=\\dfrac{25}{4}-\\dfrac84=\\dfrac{17}{4}=4.25$."
+    },
+    {
+      "id": "mth-qe-041",
+      "topicId": "maths-qe-reducible",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "If $2^{2x}-9\\cdot2^x+8=0$, find the sum of all values of $x$ satisfying this equation.",
+      "options": null,
+      "correct": 3,
+      "tolerance": null,
+      "solution": "Let $t=2^x$ (so $t>0$). Since $2^{2x}=t^2$, the equation becomes $t^2-9t+8=0 \\Rightarrow (t-1)(t-8)=0$.\n\n$t=1 \\Rightarrow 2^x=1 \\Rightarrow x=0$. $t=8 \\Rightarrow 2^x=8 \\Rightarrow x=3$. Both satisfy $t>0$.\n\nSum of all values of $x$: $0+3=3$."
+    },
+    {
+      "id": "mth-qe-042",
+      "topicId": "maths-qe-reducible",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "Which of the following are roots of $x^4-5x^2+4=0$?",
+      "options": ["A. 1", "B. -1", "C. 2", "D. 3"],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "Let $t=x^2$. Then $t^2-5t+4=0 \\Rightarrow (t-1)(t-4)=0 \\Rightarrow t=1$ or $t=4$.\n\n$t=1 \\Rightarrow x=\\pm1$; $t=4 \\Rightarrow x=\\pm2$.\n\nSo the full root set is $\\{1,-1,2,-2\\}$. Among the given options, $1$, $-1$, and $2$ are roots; $3$ is not.\n\nCorrect: **A, B, C**."
+    }
+  ]
+}

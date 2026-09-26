@@ -1,0 +1,838 @@
+{
+  "chapterId": "chemistry-atomic-structure",
+  "subject": "chemistry",
+  "title": "Atomic Structure",
+  "topics": [
+    {
+      "topicId": "chem-atom-subatomic",
+      "title": "Subatomic Particles & Early Atomic Models",
+      "order": 1,
+      "estimatedMinutes": 35,
+      "prerequisites": [],
+      "lesson": {
+        "objectives": [
+          "State the properties (charge, mass, discoverer) of the electron, proton, and neutron.",
+          "Explain Thomson's, Rutherford's, and Chadwick's experiments and the conclusions drawn from each.",
+          "Differentiate between isotopes, isobars, and isotones using atomic number and mass number.",
+          "Identify the limitations of the plum-pudding and early nuclear (planetary) atomic models."
+        ],
+        "content": "Matter is composed of atoms, once thought indivisible, but experiments from the late 19th to early 20th century revealed a rich internal structure. J.J. Thomson's cathode ray tube experiments (1897) showed that cathode rays are streams of negatively charged particles - electrons - present in atoms of every element; he measured their specific charge $e/m ≈ 1.76×10^{11}$ C/kg. Millikan's oil-drop experiment later measured the electron's charge precisely as $-1.6×10^{-19}$ C, allowing calculation of its mass ($9.1×10^{-31}$ kg). Thomson proposed the 'plum-pudding' model: electrons embedded in a sphere of uniform positive charge. This was overturned by Rutherford's alpha-particle scattering experiment (1911): most alpha particles passed straight through a thin gold foil, but a few were deflected sharply, and some almost bounced straight back. This proved that an atom's positive charge and nearly all its mass occupy a tiny, dense central nucleus, with electrons orbiting in mostly empty space - the nuclear model. Chadwick (1932) later discovered the neutral neutron by bombarding beryllium with alpha particles. Atoms are characterized by atomic number $Z$ (number of protons, equal to electrons in a neutral atom) and mass number $A = Z + $ number of neutrons. Atoms with the same $Z$ but different $A$ are isotopes; atoms with the same $A$ but different $Z$ are isobars; atoms with the same number of neutrons are isotones. These early models, though superseded by the quantum mechanical model, established the existence and basic properties of subatomic particles.",
+        "workedExample": {
+          "problem": "Atom A is carbon-14 (atomic number 6, mass number 14). Atom B is nitrogen-15 (atomic number 7, mass number 15). Find the number of neutrons in each atom and identify the relationship between A and B (isotopes/isobars/isotones).",
+          "solution": "Number of neutrons = mass number (A) minus atomic number (Z).\n\nFor atom A (carbon-14): neutrons = 14 - 6 = 8.\n\nFor atom B (nitrogen-15): neutrons = 15 - 7 = 8.\n\nBoth A and B have the same number of neutrons (8), but different atomic numbers (6 and 7) and different mass numbers (14 and 15). Species with the same number of neutrons but different Z and A are called isotones. Hence, A and B are isotones of each other."
+        },
+        "jeeTraps": [
+          "Confusing isotopes (same Z, different A), isobars (same A, different Z), and isotones (same number of neutrons) with one another.",
+          "Assuming Thomson's plum-pudding model predicted a nucleus; it was actually Rutherford's alpha-scattering experiment that established the nuclear model.",
+          "Forgetting that mass number A equals the sum of protons and neutrons (a whole number), which is different from the atomic mass (isotopic-abundance-weighted average, generally not a whole number)."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-bohr",
+      "title": "Bohr's Model of the Hydrogen Atom",
+      "order": 2,
+      "estimatedMinutes": 45,
+      "prerequisites": ["chem-atom-subatomic"],
+      "lesson": {
+        "objectives": [
+          "State Bohr's three postulates for the hydrogen atom.",
+          "Apply the formulas for radius, velocity, and energy of the nth orbit of a hydrogen-like species.",
+          "Calculate energy differences between levels and relate them to absorbed/emitted photon energy.",
+          "Recognize the limitations of the Bohr model for multi-electron atoms and fine spectral structure."
+        ],
+        "content": "Rutherford's nuclear model could not explain why orbiting electrons don't spiral into the nucleus while radiating energy, nor the discrete line spectrum of hydrogen. Niels Bohr (1913) resolved this for the hydrogen atom (and hydrogen-like one-electron species) with three postulates: (1) electrons revolve in certain fixed circular orbits called stationary states without radiating energy; (2) only orbits in which the angular momentum is quantized, $mvr = nh/2π$ ($n = 1, 2, 3, ...$), are permitted; (3) energy is absorbed or emitted only when an electron jumps between orbits, as a photon of energy $ΔE = hν$. From these postulates, for a hydrogen-like species of atomic number $Z$: the orbit radius $r_n = 0.529 × (n^2/Z)$ Å, the orbital velocity $v_n = 2.188×10^6 × (Z/n)$ m/s, and the orbital energy $E_n = -13.6 × (Z^2/n^2)$ eV. The negative sign indicates the electron is bound to the nucleus; energy increases (becomes less negative) as $n$ increases, and $E_∞ = 0$ corresponds to a free electron (ionization). The Bohr model successfully explained the hydrogen line spectrum and correctly predicted the ionization energy of hydrogen, but it fails for multi-electron atoms, cannot explain the fine splitting of spectral lines (Zeeman/Stark effects), and violates the Heisenberg Uncertainty Principle by assigning the electron a definite orbit (simultaneously definite position and momentum).",
+        "workedExample": {
+          "problem": "Calculate the radius and total energy of the electron in the 2nd orbit of the Be3+ ion (Z = 4).",
+          "solution": "Be3+ is a hydrogen-like species with Z = 4, n = 2.\n\nRadius: $r_n = 0.529 × (n^2/Z)$ Å = $0.529 × (4/4)$ = 0.529 Å.\n\nEnergy: $E_n = -13.6 × (Z^2/n^2)$ eV = $-13.6 × (16/4)$ = $-13.6 × 4$ = -54.4 eV.\n\nSo the 2nd orbit of Be3+ has radius 0.529 Å and total energy -54.4 eV."
+        },
+        "jeeTraps": [
+          "Mixing up the powers of Z in the three formulas - radius and velocity involve Z^1 (in different positions), while energy involves Z^2.",
+          "Confusing which level is n1 (lower) and which is n2 (higher) when computing ΔE for emission versus absorption, leading to sign errors.",
+          "Applying Bohr's formulas directly to multi-electron atoms; they are valid only for hydrogen and hydrogen-like one-electron species (He+, Li2+, Be3+, ...)."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-spectra",
+      "title": "Atomic Spectra & Hydrogen Spectrum",
+      "order": 3,
+      "estimatedMinutes": 45,
+      "prerequisites": ["chem-atom-bohr"],
+      "lesson": {
+        "objectives": [
+          "State the Rydberg formula and identify each spectral series by its lower energy level n1.",
+          "Calculate the wavelength or wavenumber of a spectral line using the Rydberg equation.",
+          "Determine the total number of spectral lines produced from a given transition.",
+          "Relate each hydrogen spectral series to its region of the electromagnetic spectrum."
+        ],
+        "content": "When an electric discharge is passed through hydrogen gas at low pressure, excited atoms emit light only at specific, discrete wavelengths, producing a line emission spectrum rather than a continuous rainbow. This happens because electrons can only occupy quantized energy levels; a photon is emitted when an electron falls from a higher level $n_2$ to a lower level $n_1$, with the photon's energy equal to the difference in orbital energies. The wavelength of each line is given by the Rydberg formula: $1/λ = R_H Z^2 (1/n_1^2 - 1/n_2^2)$, where $R_H = 1.097×10^7$ m^-1 is the Rydberg constant. Lines are grouped into series based on the lower level $n_1$: Lyman ($n_1=1$, ultraviolet region), Balmer ($n_1=2$, visible region - the only series partly visible to the eye), Paschen ($n_1=3$), Brackett ($n_1=4$), and Pfund ($n_1=5$), the last three lying in the infrared. The series limit (the shortest wavelength / highest energy line of a series) occurs when $n_2 → ∞$. If an electron is initially at level $n$, the total number of possible spectral lines produced as it returns to the ground state, considering every possible transition, is $n(n-1)/2$. Atomic spectra provided crucial experimental support for Bohr's quantized energy levels and remain essential tools in astronomy and analytical chemistry for identifying elements.",
+        "workedExample": {
+          "problem": "Calculate the wavelength of the second line of the Balmer series in the hydrogen atom spectrum. (R_H = 1.097×10^7 m^-1)",
+          "solution": "Balmer series: $n_1 = 2$. The first line corresponds to $n_2 = 3$, so the second line corresponds to $n_2 = 4$.\n\n$1/λ = R_H(1/n_1^2 - 1/n_2^2) = 1.097×10^7 × (1/4 - 1/16) = 1.097×10^7 × (3/16) = 1.097×10^7 × 0.1875 = 2.057×10^6$ m^-1.\n\n$λ = 1/(2.057×10^6) = 4.86×10^{-7}$ m = 486 nm.\n\nThis matches the known H-beta line of the hydrogen spectrum (486.1 nm), which lies in the visible (blue-green) region."
+        },
+        "jeeTraps": [
+          "Mixing up n1 and n2 (n2 must be greater than n1) leading to a sign error in the Rydberg formula.",
+          "Forgetting the Z^2 factor when applying the Rydberg formula to hydrogen-like ions (He+, Li2+) instead of plain hydrogen.",
+          "Miscounting the total number of spectral lines - the formula n(n-1)/2 uses the highest level reached, not the number of series involved."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-debroglie",
+      "title": "Dual Nature of Matter & de Broglie Equation",
+      "order": 4,
+      "estimatedMinutes": 35,
+      "prerequisites": ["chem-atom-bohr"],
+      "lesson": {
+        "objectives": [
+          "State de Broglie's hypothesis and write the equation λ = h/mv = h/p.",
+          "Calculate the de Broglie wavelength of a particle given its mass and velocity, or its kinetic energy.",
+          "Apply the accelerating-potential form λ = 12.27/√V Å for electrons.",
+          "Explain why wave nature is observable for microscopic particles but not for macroscopic objects."
+        ],
+        "content": "Louis de Broglie (1924) proposed that just as light exhibits both wave and particle character, all moving matter should also possess a dual wave-particle nature. He suggested that every particle of momentum $p = mv$ has an associated wavelength $λ = h/p = h/(mv)$, called the de Broglie wavelength, where $h$ is Planck's constant. This was experimentally confirmed by the Davisson-Germer electron diffraction experiment, which showed that electrons produce diffraction patterns just like X-rays. If a particle's kinetic energy $KE$ is known instead of its velocity, since $KE = (1/2)mv^2$, one can write $mv = √(2m·KE)$, so $λ = h/√(2m·KE)$. For an electron of charge $e$ accelerated from rest through a potential difference $V$, $KE = eV$, giving the convenient result $λ = 12.27/√V$ Å (with $V$ in volts). De Broglie's hypothesis is significant only for particles of very small mass (like electrons), because $λ ∝ 1/m$: for macroscopic objects (a cricket ball, a car) even at ordinary speeds, the associated wavelength is far too small (less than 10^-30 m) to produce any observable wave effect such as diffraction. For microscopic particles like electrons, however, the wavelength is comparable to atomic dimensions, making wave behaviour experimentally significant and forming the foundation of the Schrodinger wave-mechanical model of the atom.",
+        "workedExample": {
+          "problem": "Calculate the de Broglie wavelength of an electron having a kinetic energy of 100 eV. (m_e = 9.1×10^-31 kg, h = 6.626×10^-34 J s, 1 eV = 1.6×10^-19 J)",
+          "solution": "Step 1: Convert KE to joules: $KE = 100 × 1.6×10^{-19} = 1.6×10^{-17}$ J.\n\nStep 2: Use $λ = h/√(2·m·KE)$.\n\n$2×m×KE = 2 × 9.1×10^{-31} × 1.6×10^{-17} = 2.912×10^{-47}$.\n\n$√(2.912×10^{-47}) = 5.396×10^{-24}$.\n\n$λ = 6.626×10^{-34} / 5.396×10^{-24} = 1.228×10^{-10}$ m = 1.228 Å.\n\nCheck: since KE (in eV) numerically equals the accelerating voltage V for an electron, $λ = 12.27/√V = 12.27/√100 = 1.227$ Å - consistent with the direct calculation (small rounding difference only)."
+        },
+        "jeeTraps": [
+          "Forgetting to convert kinetic energy from eV to joules before substituting into λ = h/√(2mKE).",
+          "Confusing the de Broglie wavelength formula (for particles with mass, λ = h/mv) with the photon wavelength formula (E = hc/λ), which are not interchangeable.",
+          "Using the mass of the wrong particle (e.g., using electron mass when the question specifies a proton or alpha particle) or forgetting units consistency (kg, m/s, J)."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-heisenberg",
+      "title": "Heisenberg Uncertainty Principle",
+      "order": 5,
+      "estimatedMinutes": 30,
+      "prerequisites": ["chem-atom-debroglie"],
+      "lesson": {
+        "objectives": [
+          "State the Heisenberg Uncertainty Principle and write Δx·Δp ≥ h/4π.",
+          "Calculate the uncertainty in velocity given the uncertainty in position (or vice versa).",
+          "Explain why the principle is significant for electrons but negligible for macroscopic objects.",
+          "Relate the uncertainty principle to the breakdown of Bohr's concept of a definite electron orbit."
+        ],
+        "content": "Werner Heisenberg (1927) showed that it is fundamentally impossible to simultaneously know both the exact position and the exact momentum (or velocity) of a microscopic particle such as an electron, no matter how good the measuring instrument is. This is not a limitation of technology but a fundamental property of nature at quantum scales. Mathematically, if $Δx$ is the uncertainty in position and $Δp$ (or $mΔv$) is the uncertainty in momentum, then $Δx · Δp ≥ h/4π$. The principle captures the idea that the very act of trying to precisely locate an electron (for example, by 'illuminating' it with a photon) disturbs its momentum, and vice versa. Because Planck's constant $h$ is extremely small ($6.626×10^{-34}$ J s), this uncertainty is utterly negligible for macroscopic objects (whose mass is large), but becomes significant and measurable for particles as light as electrons ($m ≈ 9.1×10^{-31}$ kg). The most important consequence for atomic structure is that Bohr's idea of an electron following a precise, well-defined circular orbit (with simultaneously known position and velocity) is untenable. This directly motivated the shift to a probabilistic, wave-mechanical description of the atom, in which one speaks only of the 'probability' of finding an electron in a given region of space - the modern concept of an orbital.",
+        "workedExample": {
+          "problem": "An electron is confined within a region of size Δx = 0.5×10^-10 m (roughly an atomic diameter). Calculate the minimum uncertainty in its velocity.",
+          "solution": "By Heisenberg's uncertainty principle: $Δx·Δp ≥ h/4π$, so $Δp(min) = h/(4π·Δx)$.\n\n$4π × 0.5×10^{-10} = 6.283×10^{-10}$.\n\n$Δp = 6.626×10^{-34} / 6.283×10^{-10} = 1.055×10^{-24}$ kg m/s.\n\n$Δv = Δp/m_e = 1.055×10^{-24} / 9.1×10^{-31} = 1.159×10^6$ m/s.\n\nThe minimum uncertainty in the electron's velocity is about $1.16×10^6$ m/s - extremely large, showing why a fixed circular orbit (definite position AND velocity) is meaningless for an electron confined to atomic dimensions."
+        },
+        "jeeTraps": [
+          "Using h/2π (the reduced constant used for angular momentum quantization) in place of h/4π in the uncertainty formula, or vice versa.",
+          "Forgetting to divide the momentum uncertainty by mass to obtain the velocity uncertainty.",
+          "Treating the uncertainty principle as an exact equality rather than a lower bound (≥), and over-interpreting a single numeric answer as the only possible uncertainty."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-quantum-numbers",
+      "title": "Quantum Mechanical Model & Quantum Numbers",
+      "order": 6,
+      "estimatedMinutes": 50,
+      "prerequisites": ["chem-atom-heisenberg"],
+      "lesson": {
+        "objectives": [
+          "List the four quantum numbers (n, l, m, s) and the physical property each one describes.",
+          "Apply the rules governing the allowed values of l, m, and s for a given n.",
+          "Determine the maximum number of electrons in a given shell, subshell, or orbital.",
+          "Identify valid and invalid sets of quantum numbers for an electron."
+        ],
+        "content": "The Schrodinger wave equation, when solved for the hydrogen atom, yields solutions (wavefunctions, $ψ$) called orbitals, each completely specified by three quantum numbers, with a fourth added to account for electron spin. The principal quantum number $n$ ($=1,2,3,...$) determines the shell, and mainly the size and energy of the orbital - a higher $n$ generally means a larger size and higher energy. The azimuthal (angular momentum) quantum number $l$ ($=0$ to $n-1$) determines the subshell and shape of the orbital: $l=0,1,2,3$ correspond to s, p, d, f subshells respectively. The magnetic quantum number $m$ (or $m_l$), ranging from $-l$ to $+l$ (giving $2l+1$ values), determines the spatial orientation of the orbital. Finally, the spin quantum number $s$ (or $m_s$), which can only be $+1/2$ or $-1/2$, describes the intrinsic spin of the electron and does not arise from solving the spatial part of the wave equation. Together these four numbers uniquely define the state of every electron in an atom (Pauli's principle: no two electrons in the same atom can share all four identical quantum numbers). The number of orbitals in a subshell is $2l+1$; a subshell can hold a maximum of $2(2l+1)$ electrons; and a full shell can hold a maximum of $2n^2$ electrons.",
+        "workedExample": {
+          "problem": "List all the possible subshells for the shell with n = 4, state the total number of orbitals in this shell, and find the maximum number of electrons it can hold.",
+          "solution": "For n = 4, $l$ can range from 0 to $(n-1) = 3$, so $l = 0, 1, 2, 3$, giving subshells 4s, 4p, 4d, 4f.\n\nNumber of orbitals in each subshell = $(2l+1)$: 4s has 1, 4p has 3, 4d has 5, 4f has 7.\n\nTotal orbitals = 1+3+5+7 = 16 (which equals $n^2 = 4^2 = 16$, as expected).\n\nMaximum electrons in the shell = $2n^2 = 2×16 = 32$."
+        },
+        "jeeTraps": [
+          "Assuming l can equal n; in fact l must be at most (n-1).",
+          "Forgetting that m ranges over 2l+1 integer values including 0 and negative values, not just from 1 up to l.",
+          "Believing the spin quantum number affects orbital shape or energy directly; it only distinguishes the two electrons that occupy the same orbital."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-orbital-shapes",
+      "title": "Shapes of Orbitals & Nodes",
+      "order": 7,
+      "estimatedMinutes": 45,
+      "prerequisites": ["chem-atom-quantum-numbers"],
+      "lesson": {
+        "objectives": [
+          "Describe the shapes of s, p, and d orbitals.",
+          "Define radial and angular nodes and compute their numbers using n-l-1 and l respectively.",
+          "Calculate the total number of nodes in a given orbital using n-1.",
+          "Recognize that the five d orbitals are not all geometrically identical (d_z^2 differs from the other four)."
+        ],
+        "content": "The shape of an orbital is governed by its azimuthal quantum number $l$. An s orbital ($l=0$) is spherically symmetric - its probability density depends only on distance from the nucleus, not on direction. A p orbital ($l=1$) has a dumbbell shape with two lobes on either side of the nucleus along an axis ($p_x$, $p_y$, $p_z$), separated by a nodal plane through the nucleus. The five d orbitals ($l=2$) are more complex: four of them ($d_{xy}$, $d_{yz}$, $d_{xz}$, $d_{x^2-y^2}$) have a four-lobed 'cloverleaf' shape, while the fifth, $d_{z^2}$, is shaped differently - two lobes along the z-axis plus a doughnut-shaped ring around the middle. A node is a point or surface where the probability of finding the electron is exactly zero. There are two types: radial nodes (spherical surfaces where the radial part of the wavefunction is zero), whose number equals $n-l-1$; and angular nodes (planar or conical surfaces from the angular part), whose number equals $l$. The total number of nodes in any orbital is always $n-1$, regardless of $l$. For example, a 3p orbital ($n=3, l=1$) has $3-1-1=1$ radial node and $1$ angular node, totalling $2 = n-1$ nodes. Understanding nodes helps explain the radial probability distribution curves used to describe electron density around the nucleus.",
+        "workedExample": {
+          "problem": "Determine the number of radial nodes, angular nodes, and total nodes present in a 4d orbital.",
+          "solution": "For the 4d orbital: $n=4$, $l=2$.\n\nRadial nodes = $n - l - 1 = 4 - 2 - 1 = 1$.\n\nAngular nodes = $l = 2$.\n\nTotal nodes = radial + angular = $1 + 2 = 3$, which equals $n - 1 = 4 - 1 = 3$ (consistency check).\n\nSo a 4d orbital has 1 radial node, 2 angular nodes, and 3 total nodes."
+        },
+        "jeeTraps": [
+          "Confusing radial nodes (n-l-1) with angular nodes (l) and with the total number of nodes (n-1).",
+          "Assuming all orbitals of the same subshell (e.g., all five 3d orbitals) look geometrically identical - the d_z^2 orbital has a distinctly different shape from the other four d orbitals.",
+          "Thinking a node is where the probability is maximum instead of where the probability density is exactly zero."
+        ]
+      }
+    },
+    {
+      "topicId": "chem-atom-econfig",
+      "title": "Electronic Configuration (Aufbau, Pauli, Hund)",
+      "order": 8,
+      "estimatedMinutes": 50,
+      "prerequisites": ["chem-atom-quantum-numbers", "chem-atom-orbital-shapes"],
+      "lesson": {
+        "objectives": [
+          "State the Aufbau principle, the Pauli Exclusion Principle, and Hund's Rule of Maximum Multiplicity.",
+          "Write ground-state electronic configurations using the (n+l) rule / orbital energy order.",
+          "Identify and justify exceptions such as the Cr and Cu configurations due to extra stability of half-filled/fully-filled subshells.",
+          "Determine the number of unpaired electrons in a given electronic configuration."
+        ],
+        "content": "The ground-state electronic configuration of a multi-electron atom is built up using three rules. The Aufbau ('building-up') principle states that orbitals are filled in order of increasing energy, determined practically by the $(n+l)$ rule: orbitals with a lower $(n+l)$ value fill first; if two orbitals have equal $(n+l)$, the one with the lower $n$ fills first. This gives the familiar filling order: $1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, ...$ - notably $4s$ fills before $3d$. The Pauli Exclusion Principle states that no two electrons in an atom can have identical values of all four quantum numbers; consequently, an orbital can hold a maximum of two electrons, which must have opposite spins. Hund's Rule of Maximum Multiplicity states that electrons entering a set of degenerate orbitals (same subshell) will first occupy each orbital singly, with parallel spins, before any pairing occurs - this minimizes electron-electron repulsion and maximizes stability via exchange energy. These rules predict most configurations correctly, but a few transition metals deviate: chromium (Cr, Z=24) has configuration $[Ar]3d^5 4s^1$, and copper (Cu, Z=29) has $[Ar]3d^{10}4s^1$, rather than the naively predicted $3d^4 4s^2$ and $3d^9 4s^2$, because half-filled and fully-filled d-subshells possess extra stability from greater exchange energy and more symmetric charge distribution.",
+        "workedExample": {
+          "problem": "Write the ground-state electronic configuration of copper (Cu, Z = 29) and determine the number of unpaired electrons in it.",
+          "solution": "Copper has 29 electrons. Filling by the Aufbau/(n+l) order up to Z=29 would naively give: $[Ar] 3d^9 4s^2$ (18 + 9 + 2 = 29).\n\nHowever, a fully-filled d subshell ($3d^{10}$) is more stable (greater exchange energy, symmetrical distribution) than a $3d^9$ configuration. So one 4s electron shifts into 3d, giving the actual ground-state configuration:\n\n$Cu: [Ar] 3d^{10} 4s^1$ (18 + 10 + 1 = 29). Verified.\n\nUnpaired electrons: the $3d^{10}$ subshell is completely filled (all electrons paired), and the $4s^1$ subshell has one electron, which is unpaired.\n\nTotal unpaired electrons in Cu = 1."
+        },
+        "jeeTraps": [
+          "Writing Cr as [Ar]3d^4 4s^2 and Cu as [Ar]3d^9 4s^2 instead of the correct exceptions 3d^5 4s^1 and 3d^10 4s^1.",
+          "Applying Hund's rule incorrectly by pairing electrons in a subshell before every degenerate orbital has received one electron.",
+          "Forgetting that when writing configurations of transition metal cations, electrons are removed from the 4s orbital before 3d, even though 4s was filled before 3d during the original build-up."
+        ]
+      }
+    }
+  ],
+  "questionPool": [
+    {
+      "id": "chem-atom-001",
+      "topicId": "chem-atom-subatomic",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 75,
+      "stem": "Which subatomic particle was discovered by J. J. Thomson through the study of cathode rays, and what is its approximate specific charge (e/m)?",
+      "options": [
+        "A. Proton; 9.58×10^7 C/kg",
+        "B. Neutron; charge is zero, e/m is undefined",
+        "C. Electron; 1.76×10^11 C/kg",
+        "D. Electron; 9.1×10^-31 C/kg"
+      ],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "Cathode rays consist of electrons (discovered by Thomson, 1897). By measuring the deflection of cathode rays in electric and magnetic fields, Thomson determined the electron's specific charge e/m ≈ 1.758×10^11 C/kg, a value independent of the gas or electrode material used, proving the electron is a universal constituent of atoms. Option D confuses e/m with the electron's mass."
+    },
+    {
+      "id": "chem-atom-002",
+      "topicId": "chem-atom-subatomic",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "Rutherford's alpha-particle scattering experiment on a thin gold foil led to which major conclusion about atomic structure?",
+      "options": [
+        "A. Electrons are embedded in a uniform sphere of positive charge, like seeds in a watermelon",
+        "B. Most of the atom's mass and all its positive charge are concentrated in a tiny, dense nucleus, with electrons revolving around it through mostly empty space",
+        "C. Atoms cannot be divided further and have no internal structure",
+        "D. Electrons and protons are distributed uniformly throughout the atom's volume"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "Since most alpha particles passed straight through the foil, the atom must be mostly empty space. A small fraction were deflected at large angles (a few even bounced back), implying a small, dense, positively charged nucleus containing nearly all the mass, with electrons revolving around it in the surrounding empty space - the nuclear (planetary) model of the atom."
+    },
+    {
+      "id": "chem-atom-003",
+      "topicId": "chem-atom-subatomic",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "Atom P has atomic number 17 and mass number 37. Atom Q has atomic number 18 and mass number 37. What is the relationship between P and Q?",
+      "options": [
+        "A. Isotopes (same Z, different A)",
+        "B. Isobars (same A, different Z)",
+        "C. Isotones (same number of neutrons)",
+        "D. Isoelectronic species (same number of electrons)"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "P and Q have the same mass number (A = 37) but different atomic numbers (17 and 18), so they are isobars. Checking neutrons: P has 37-17 = 20 neutrons; Q has 37-18 = 19 neutrons - different, so they are not isotones. As neutral atoms, their electron counts are 17 and 18 respectively - different, so they are not isoelectronic either."
+    },
+    {
+      "id": "chem-atom-004",
+      "topicId": "chem-atom-subatomic",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "The neutron was discovered by James Chadwick in 1932 by bombarding beryllium with alpha particles. Which property of the emitted radiation confirmed it to be a new neutral particle rather than gamma radiation?",
+      "options": [
+        "A. It carried no charge but caused significant recoil and ejection of protons from paraffin wax, showing it had a mass comparable to a proton",
+        "B. It was deflected strongly by a magnetic field, like an electron",
+        "C. It travelled slower than light and carried a negative charge",
+        "D. It was completely absorbed by a thin sheet of paper, unlike gamma rays"
+      ],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "The radiation from the Be + alpha bombardment was electrically neutral (undeflected by electric and magnetic fields, ruling out charged particles), yet it knocked protons out of paraffin wax with high energy - possible only if the radiation consisted of particles with mass comparable to the proton, not massless gamma photons. This identified the new particle as the neutron."
+    },
+    {
+      "id": "chem-atom-005",
+      "topicId": "chem-atom-subatomic",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "Which of the following statements about the fundamental subatomic particles are correct? (Select all that apply.)",
+      "options": [
+        "A. The electron carries a charge of -1.6×10^-19 C and has a mass of about 1/1837 times the mass of a proton",
+        "B. The proton and neutron have nearly equal mass (≈1 amu each), but the neutron carries no charge",
+        "C. Protons and neutrons together are called nucleons and reside inside the nucleus, while electrons revolve around it",
+        "D. The mass of the electron was first accurately measured by Rutherford using the gold-foil scattering experiment"
+      ],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A is correct: m_e ≈ 9.1×10^-31 kg ≈ m_p/1837, with charge -1.6×10^-19 C. B is correct: m_p ≈ m_n ≈ 1 amu, and the neutron is electrically neutral. C is correct by the definition of nucleons. D is incorrect - the electron's charge-to-mass ratio was measured by Thomson, and its charge (hence mass) by Millikan's oil-drop experiment; Rutherford's experiment established the existence of the nucleus, not the electron's mass."
+    },
+    {
+      "id": "chem-atom-006",
+      "topicId": "chem-atom-bohr",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 150,
+      "stem": "Calculate the radius (in Å) of the 2nd Bohr orbit of the He+ ion. (Radius of the 1st Bohr orbit of H = 0.529 Å; use r_n = 0.529 × (n^2/Z) Å)",
+      "options": null,
+      "correct": 1.058,
+      "tolerance": 0.02,
+      "solution": "For He+, Z = 2, n = 2. r_n = 0.529 × (n^2/Z) Å = 0.529 × (4/2) = 0.529 × 2 = 1.058 Å."
+    },
+    {
+      "id": "chem-atom-007",
+      "topicId": "chem-atom-bohr",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "Calculate the velocity (in m/s) of the electron in the 3rd Bohr orbit of the Li2+ ion. (Use v_n = 2.188×10^6 × (Z/n) m/s for a hydrogen-like species)",
+      "options": null,
+      "correct": 2188000,
+      "tolerance": 20000,
+      "solution": "For Li2+, Z = 3, n = 3. v_n = 2.188×10^6 × (Z/n) m/s = 2.188×10^6 × (3/3) = 2.188×10^6 m/s = 2,188,000 m/s."
+    },
+    {
+      "id": "chem-atom-008",
+      "topicId": "chem-atom-bohr",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "Calculate the energy (in eV) required to excite an electron in a hydrogen atom from the ground state (n=1) to the n=3 level. (E_n = -13.6/n^2 eV)",
+      "options": null,
+      "correct": 12.09,
+      "tolerance": 0.05,
+      "solution": "E_1 = -13.6/1^2 = -13.6 eV. E_3 = -13.6/3^2 = -13.6/9 = -1.511 eV. Energy absorbed, ΔE = E_3 - E_1 = -1.511 - (-13.6) = 12.09 eV."
+    },
+    {
+      "id": "chem-atom-009",
+      "topicId": "chem-atom-bohr",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 65,
+      "stem": "According to Bohr's model, an electron can revolve only in certain fixed circular orbits without radiating energy because in these orbits its angular momentum is:",
+      "options": [
+        "A. Zero",
+        "B. An integral multiple of h/2π (i.e., mvr = nh/2π)",
+        "C. Equal to Planck's constant h",
+        "D. Continuously variable"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "Bohr postulated that the angular momentum of the electron is quantized: mvr = nh/2π, where n = 1, 2, 3, .... Only orbits satisfying this condition are allowed 'stationary states', in which the electron does not radiate energy."
+    },
+    {
+      "id": "chem-atom-010",
+      "topicId": "chem-atom-bohr",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 100,
+      "stem": "What is the ratio of the radius of the 2nd Bohr orbit to the radius of the 3rd Bohr orbit in a hydrogen atom?",
+      "options": [
+        "A. 2:3",
+        "B. 4:9",
+        "C. 9:4",
+        "D. 3:2"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "r_n ∝ n^2/Z. For the same Z (hydrogen), r_2/r_3 = 2^2/3^2 = 4/9, i.e., a ratio of 4:9."
+    },
+    {
+      "id": "chem-atom-011",
+      "topicId": "chem-atom-bohr",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 130,
+      "stem": "For a hydrogen atom, which of the following single-level transitions releases a photon of the highest energy?",
+      "options": [
+        "A. n=2 → n=1",
+        "B. n=3 → n=2",
+        "C. n=4 → n=3",
+        "D. n=5 → n=4"
+      ],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "ΔE = 13.6(1/n1^2 - 1/n2^2) eV. Computing each: (2→1) = 13.6(1 - 1/4) = 10.2 eV; (3→2) = 13.6(1/4 - 1/9) = 1.89 eV; (4→3) = 13.6(1/9 - 1/16) = 0.66 eV; (5→4) = 13.6(1/16 - 1/25) = 0.31 eV. Energy gaps shrink rapidly as n increases (levels crowd together), so the n=2→1 transition releases the most energetic photon."
+    },
+    {
+      "id": "chem-atom-012",
+      "topicId": "chem-atom-spectra",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "Calculate the wavelength (in nm) of the first line of the Balmer series in the hydrogen emission spectrum. (R_H = 1.097×10^7 m^-1)",
+      "options": null,
+      "correct": 656.4,
+      "tolerance": 2,
+      "solution": "Balmer series: n1 = 2. First line: n2 = 3. 1/λ = R_H(1/4 - 1/9) = 1.097×10^7 × (5/36) = 1.524×10^6 m^-1. λ = 1/(1.524×10^6) = 6.564×10^-7 m = 656.4 nm."
+    },
+    {
+      "id": "chem-atom-013",
+      "topicId": "chem-atom-spectra",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 150,
+      "stem": "Calculate the wavenumber (in m^-1) of the series limit of the Lyman series for the hydrogen atom. (R_H = 1.097×10^7 m^-1)",
+      "options": null,
+      "correct": 10970000,
+      "tolerance": 100000,
+      "solution": "The series limit corresponds to n2 → ∞, with n1 = 1 for the Lyman series. Wavenumber = R_H(1/1^2 - 1/∞^2) = R_H × 1 = 1.097×10^7 m^-1."
+    },
+    {
+      "id": "chem-atom-014",
+      "topicId": "chem-atom-spectra",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "Match the hydrogen spectral series in Column I with the region of the electromagnetic spectrum in which it is mainly observed in Column II.\n\n**Column I**\nP. Lyman series (n1 = 1)\nQ. Balmer series (n1 = 2)\nR. Paschen series (n1 = 3)\nS. Brackett series (n1 = 4)\n\n**Column II**\n1. Ultraviolet region\n2. Visible region\n3. Near-infrared region\n4. Far-infrared region",
+      "options": null,
+      "correct": {"P": "1", "Q": "2", "R": "3", "S": "4"},
+      "tolerance": null,
+      "solution": "Lyman series (transitions to n=1) lies in the UV region. Balmer series (transitions to n=2) lies mostly in the visible region - the only series with lines the eye can see. Paschen series (to n=3) lies in the near-infrared. Brackett series (to n=4) lies further into the infrared. Hence P-1, Q-2, R-3, S-4."
+    },
+    {
+      "id": "chem-atom-015",
+      "topicId": "chem-atom-spectra",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 60,
+      "stem": "The Balmer series in the hydrogen spectrum results from the transition of an electron from higher energy levels (n=3,4,5,...) to which orbit?",
+      "options": [
+        "A. n=1",
+        "B. n=2",
+        "C. n=3",
+        "D. n=4"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "By definition, the Balmer series arises from electronic transitions ending at n1=2; it is the only hydrogen series with lines partly in the visible region."
+    },
+    {
+      "id": "chem-atom-016",
+      "topicId": "chem-atom-spectra",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "An electron in a hydrogen atom is excited to the n=5 level. Considering all possible transitions as it returns to the ground state, what is the total number of spectral lines that can be observed?",
+      "options": [
+        "A. 5",
+        "B. 8",
+        "C. 10",
+        "D. 15"
+      ],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "Total number of spectral lines = n(n-1)/2, where n is the highest energy level reached. For n=5: lines = 5×4/2 = 10."
+    },
+    {
+      "id": "chem-atom-017",
+      "topicId": "chem-atom-spectra",
+      "type": "mcq_single",
+      "difficulty": "hard",
+      "expectedSeconds": 200,
+      "stem": "Calculate the wavelength of the spectral line corresponding to the transition n=2 → n=1 in the hydrogen atom (the Lyman-alpha line). (R_H = 1.097×10^7 m^-1)",
+      "options": [
+        "A. 91.2 nm",
+        "B. 121.6 nm",
+        "C. 364.6 nm",
+        "D. 656.4 nm"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "1/λ = R_H(1/1^2 - 1/2^2) = 1.097×10^7 × (1 - 0.25) = 1.097×10^7 × 0.75 = 8.228×10^6 m^-1. λ = 1/(8.228×10^6) = 1.216×10^-7 m = 121.6 nm."
+    },
+    {
+      "id": "chem-atom-018",
+      "topicId": "chem-atom-debroglie",
+      "type": "numerical",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "Calculate the de Broglie wavelength (in Å) of an electron accelerated from rest through a potential difference of 100 V. (Use λ = 12.27/√V Å)",
+      "options": null,
+      "correct": 1.227,
+      "tolerance": 0.02,
+      "solution": "λ = 12.27/√V Å = 12.27/√100 = 12.27/10 = 1.227 Å."
+    },
+    {
+      "id": "chem-atom-019",
+      "topicId": "chem-atom-debroglie",
+      "type": "numerical",
+      "difficulty": "medium",
+      "expectedSeconds": 160,
+      "stem": "A ball of mass 0.1 kg moves with a velocity of 10 m/s. Calculate its de Broglie wavelength (in m). (h = 6.626×10^-34 J s)",
+      "options": null,
+      "correct": 6.626e-34,
+      "tolerance": 5e-36,
+      "solution": "λ = h/(mv) = 6.626×10^-34 / (0.1 × 10) = 6.626×10^-34 / 1 = 6.626×10^-34 m. This wavelength is far too small to be detected, which is why macroscopic objects do not show observable wave behaviour."
+    },
+    {
+      "id": "chem-atom-020",
+      "topicId": "chem-atom-debroglie",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 65,
+      "stem": "The de Broglie hypothesis proposes that:",
+      "options": [
+        "A. Only photons of light exhibit wave-particle duality",
+        "B. Every moving material particle is associated with a wave whose wavelength is λ = h/mv",
+        "C. Electrons behave purely as particles with no wave character",
+        "D. The wavelength of a particle is independent of its momentum"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "De Broglie proposed that all matter in motion exhibits wave-like character, with wavelength λ = h/mv = h/p, extending the dual nature already known for light (photons) to material particles. Option D is false since λ is inversely proportional to momentum."
+    },
+    {
+      "id": "chem-atom-021",
+      "topicId": "chem-atom-debroglie",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "An electron, a proton, a neutron, and an alpha particle all have the same kinetic energy. Which one has the longest de Broglie wavelength?",
+      "options": [
+        "A. Electron",
+        "B. Proton",
+        "C. Neutron",
+        "D. Alpha particle"
+      ],
+      "correct": "A",
+      "tolerance": null,
+      "solution": "For the same kinetic energy E, λ = h/√(2mE), so λ is proportional to 1/√m. The electron has by far the smallest mass among the four particles, hence the largest wavelength."
+    },
+    {
+      "id": "chem-atom-022",
+      "topicId": "chem-atom-debroglie",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 130,
+      "stem": "Calculate the de Broglie wavelength of an electron moving with a speed of 3×10^6 m/s. (m_e = 9.1×10^-31 kg, h = 6.626×10^-34 J s)",
+      "options": [
+        "A. 24.3 pm",
+        "B. 121.6 pm",
+        "C. 242.7 pm",
+        "D. 486.0 pm"
+      ],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "λ = h/(mv) = 6.626×10^-34 / (9.1×10^-31 × 3×10^6) = 6.626×10^-34 / 2.73×10^-24 = 2.427×10^-10 m = 242.7 pm."
+    },
+    {
+      "id": "chem-atom-023",
+      "topicId": "chem-atom-heisenberg",
+      "type": "numerical",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "The position of an electron is measured with an uncertainty of Δx = 1×10^-10 m (about the size of an atom). Calculate the minimum uncertainty in its velocity, Δv (in m/s). (h = 6.626×10^-34 J s, m_e = 9.1×10^-31 kg)",
+      "options": null,
+      "correct": 579000,
+      "tolerance": 10000,
+      "solution": "Δx·Δp ≥ h/4π, so Δp(min) = h/(4πΔx) = 6.626×10^-34/(4π×1×10^-10) = 6.626×10^-34/(1.2566×10^-9) = 5.273×10^-25 kg m/s. Δv = Δp/m = 5.273×10^-25/9.1×10^-31 = 5.79×10^5 m/s = 579,000 m/s."
+    },
+    {
+      "id": "chem-atom-024",
+      "topicId": "chem-atom-heisenberg",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "The Heisenberg Uncertainty Principle states that it is impossible to simultaneously determine, with absolute precision, which pair of properties of a microscopic moving particle such as an electron?",
+      "options": [
+        "A. Mass and charge",
+        "B. Position and momentum (or velocity)",
+        "C. Energy and charge",
+        "D. Spin and charge"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "The uncertainty principle states Δx·Δp ≥ h/4π; the more precisely the position (Δx) is known, the less precisely the momentum/velocity (Δp) can be known simultaneously, and vice versa."
+    },
+    {
+      "id": "chem-atom-025",
+      "topicId": "chem-atom-heisenberg",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 120,
+      "stem": "Why is the Heisenberg Uncertainty Principle significant for electrons but negligible for everyday macroscopic objects such as a cricket ball?",
+      "options": [
+        "A. Electrons have negative charge while cricket balls are neutral",
+        "B. Planck's constant h is extremely small, so the uncertainty product (which involves h divided by mass) is significant only when the mass is very small (as for an electron); for large masses the resulting uncertainty is negligibly small compared to the object's measurable position/velocity",
+        "C. The uncertainty principle only applies to particles that move in circular orbits",
+        "D. Cricket balls do not obey the laws of quantum mechanics at all"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "Since Δx·Δv ≥ h/(4πm), for a macroscopic mass (e.g., ~100 g), even with h in the numerator, the resulting Δv or Δx is many orders of magnitude smaller than what can be measured - hence undetectable in practice. For an electron (m ~10^-31 kg), the same h produces a significant, measurable uncertainty."
+    },
+    {
+      "id": "chem-atom-026",
+      "topicId": "chem-atom-heisenberg",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 130,
+      "stem": "Which of the following is a direct consequence of the Heisenberg Uncertainty Principle on our understanding of atomic structure?",
+      "options": [
+        "A. It confirms that electrons move in fixed, well-defined circular orbits as proposed by Bohr",
+        "B. It rules out the possibility of assigning a precise trajectory (path) to an electron, leading to a probabilistic (orbital) description of electron position instead",
+        "C. It proves that electrons have no wave character",
+        "D. It shows that the energy of an electron in an atom cannot be quantized"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "Since position and momentum cannot both be known exactly, the classical idea of a well-defined orbit/trajectory for the electron breaks down. This necessitated the probabilistic, wave-mechanical (quantum mechanical) model, where an orbital gives only the probability of finding the electron in a region of space."
+    },
+    {
+      "id": "chem-atom-027",
+      "topicId": "chem-atom-quantum-numbers",
+      "type": "mcq_single",
+      "difficulty": "medium",
+      "expectedSeconds": 110,
+      "stem": "What is the maximum number of electrons that can be accommodated in the shell with principal quantum number n = 4?",
+      "options": [
+        "A. 16",
+        "B. 18",
+        "C. 32",
+        "D. 8"
+      ],
+      "correct": "C",
+      "tolerance": null,
+      "solution": "Maximum electrons in a shell = 2n^2. For n = 4: 2×4^2 = 2×16 = 32."
+    },
+    {
+      "id": "chem-atom-028",
+      "topicId": "chem-atom-quantum-numbers",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "Which of the following sets of quantum numbers (n, l, m, s) for an electron are permissible according to the rules governing quantum numbers? (Select all that apply.)",
+      "options": [
+        "A. n=3, l=2, m=-2, s=+1/2",
+        "B. n=2, l=2, m=0, s=+1/2",
+        "C. n=4, l=3, m=-3, s=-1/2",
+        "D. n=3, l=1, m=2, s=+1/2"
+      ],
+      "correct": ["A", "C"],
+      "tolerance": null,
+      "solution": "Rule: 0 ≤ l ≤ (n-1), and -l ≤ m ≤ +l, s = ±1/2.\nA: n=3 → l can be 0,1,2; l=2 is valid; m ranges -2..2, m=-2 is valid. Permissible.\nB: n=2 → l can only be 0 or 1; l=2 is NOT allowed since l ≤ n-1 = 1. Not permissible.\nC: n=4 → l can be 0,1,2,3; l=3 is valid; m ranges -3..3, m=-3 is valid. Permissible.\nD: n=3, l=1 → m must range -1..+1; m=2 is out of range. Not permissible.\nCorrect answers: A and C."
+    },
+    {
+      "id": "chem-atom-029",
+      "topicId": "chem-atom-quantum-numbers",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 220,
+      "stem": "Which of the following statements regarding the four quantum numbers are correct? (Select all that apply.)",
+      "options": [
+        "A. The azimuthal quantum number (l) determines the shape of the orbital",
+        "B. The magnetic quantum number (m) determines the spatial orientation of the orbital",
+        "C. The spin quantum number (s) can take any value between -1 and +1",
+        "D. The principal quantum number (n) primarily determines the energy and size of the orbital (for a given atom)"
+      ],
+      "correct": ["A", "B", "D"],
+      "tolerance": null,
+      "solution": "A is correct - l defines the subshell shape (s, p, d, f). B is correct - m defines the orientation of the orbital in space (2l+1 orientations). C is incorrect - the spin quantum number can only be +1/2 or -1/2, not any value in between. D is correct - n mainly governs the size and energy of the orbital/shell."
+    },
+    {
+      "id": "chem-atom-030",
+      "topicId": "chem-atom-quantum-numbers",
+      "type": "integer",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "For an electron with principal quantum number n = 3, how many different values of the azimuthal quantum number (l) are possible?",
+      "options": null,
+      "correct": 3,
+      "tolerance": null,
+      "solution": "l can take integer values from 0 to (n-1). For n=3: l = 0, 1, 2 → 3 possible values (corresponding to the s, p, and d subshells)."
+    },
+    {
+      "id": "chem-atom-031",
+      "topicId": "chem-atom-quantum-numbers",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "What is the total number of orbitals present in the subshell for which n = 4 and l = 3 (i.e., the 4f subshell)?",
+      "options": null,
+      "correct": 7,
+      "tolerance": null,
+      "solution": "The number of orbitals in a subshell is (2l+1). For l=3: 2(3)+1 = 7 orbitals - the 4f subshell has 7 orbitals, corresponding to m = -3,-2,-1,0,+1,+2,+3."
+    },
+    {
+      "id": "chem-atom-032",
+      "topicId": "chem-atom-quantum-numbers",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "Match the subshell notation in Column I with its azimuthal quantum number (l) value in Column II.\n\n**Column I**\nP. s subshell\nQ. p subshell\nR. d subshell\nS. f subshell\n\n**Column II**\n1. l = 0\n2. l = 1\n3. l = 2\n4. l = 3",
+      "options": null,
+      "correct": {"P": "1", "Q": "2", "R": "3", "S": "4"},
+      "tolerance": null,
+      "solution": "By convention, l=0 is labelled s, l=1 is p, l=2 is d, and l=3 is f. Hence P-1, Q-2, R-3, S-4."
+    },
+    {
+      "id": "chem-atom-033",
+      "topicId": "chem-atom-orbital-shapes",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "Which of the following statements about nodes in atomic orbitals are correct? (Select all that apply.)",
+      "options": [
+        "A. The number of radial nodes in a 3s orbital is 2",
+        "B. The number of angular nodes in a 3p orbital is 1",
+        "C. The total number of nodes in a 4d orbital is 3",
+        "D. A 2p orbital has one radial node"
+      ],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "Radial nodes = n-l-1; angular nodes = l; total nodes = n-1.\nA: 3s (n=3, l=0): radial nodes = 3-0-1 = 2. Correct.\nB: 3p (n=3, l=1): angular nodes = l = 1. Correct.\nC: 4d (n=4, l=2): total nodes = n-1 = 3. Correct.\nD: 2p (n=2, l=1): radial nodes = 2-1-1 = 0, not 1. Incorrect."
+    },
+    {
+      "id": "chem-atom-034",
+      "topicId": "chem-atom-orbital-shapes",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "Which of the following statements regarding the shapes of atomic orbitals are correct? (Select all that apply.)",
+      "options": [
+        "A. p orbitals are dumbbell-shaped, each with two lobes along an axis",
+        "B. All five d orbitals of a given subshell are geometrically identical in shape and only differ in spatial orientation",
+        "C. The s orbital is spherically symmetric and non-directional",
+        "D. Each p orbital possesses two angular nodes"
+      ],
+      "correct": ["A", "C"],
+      "tolerance": null,
+      "solution": "A is correct - each p orbital (px, py, pz) has a dumbbell shape with two lobes. C is correct - s orbitals are spherically symmetric with no angular dependence. B is incorrect - four of the five d orbitals (dxy, dyz, dxz, dx2-y2) have a four-lobed 'cloverleaf' shape, while dz2 has a distinctly different shape (two lobes along z plus a torus in the xy-plane); they are not all geometrically identical. D is incorrect - a p orbital has only 1 angular node (angular nodes = l = 1 for p)."
+    },
+    {
+      "id": "chem-atom-035",
+      "topicId": "chem-atom-orbital-shapes",
+      "type": "integer",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "How many angular nodes are present in a 5d orbital?",
+      "options": null,
+      "correct": 2,
+      "tolerance": null,
+      "solution": "Angular nodes = azimuthal quantum number l. For a d orbital, l = 2, so a 5d orbital has 2 angular nodes (independent of n)."
+    },
+    {
+      "id": "chem-atom-036",
+      "topicId": "chem-atom-orbital-shapes",
+      "type": "integer",
+      "difficulty": "medium",
+      "expectedSeconds": 170,
+      "stem": "What is the total number of nodes (radial + angular) present in a 4p orbital?",
+      "options": null,
+      "correct": 3,
+      "tolerance": null,
+      "solution": "Total nodes = n - 1. For 4p, n = 4, so total nodes = 4 - 1 = 3 (radial nodes = n-l-1 = 4-1-1 = 2, angular nodes = l = 1, sum = 3)."
+    },
+    {
+      "id": "chem-atom-037",
+      "topicId": "chem-atom-orbital-shapes",
+      "type": "matching",
+      "difficulty": "medium",
+      "expectedSeconds": 190,
+      "stem": "Match the orbital in Column I with the total number of nodes (radial + angular) it contains in Column II.\n\n**Column I**\nP. 2s orbital\nQ. 3p orbital\nR. 4d orbital\nS. 5f orbital\n\n**Column II**\n1. 1 node\n2. 2 nodes\n3. 3 nodes\n4. 4 nodes",
+      "options": null,
+      "correct": {"P": "1", "Q": "2", "R": "3", "S": "4"},
+      "tolerance": null,
+      "solution": "Total nodes = n - 1, independent of l.\nP: 2s → n=2 → 1 node.\nQ: 3p → n=3 → 2 nodes.\nR: 4d → n=4 → 3 nodes.\nS: 5f → n=5 → 4 nodes.\nHence P-1, Q-2, R-3, S-4."
+    },
+    {
+      "id": "chem-atom-038",
+      "topicId": "chem-atom-econfig",
+      "type": "mcq_single",
+      "difficulty": "easy",
+      "expectedSeconds": 70,
+      "stem": "The ground-state electronic configuration of chromium (Cr, Z=24) is [Ar]3d^5 4s^1 rather than the Aufbau-predicted [Ar]3d^4 4s^2. What is the main reason for this?",
+      "options": [
+        "A. Chromium does not follow the Aufbau principle at all",
+        "B. A half-filled d subshell (3d^5) together with a half-filled s subshell provides extra stability due to greater exchange energy and symmetrical electron distribution",
+        "C. The 4s orbital has higher energy than 3d in chromium, so it must remain singly occupied",
+        "D. Chromium has an odd atomic number, which forces one electron into 4s"
+      ],
+      "correct": "B",
+      "tolerance": null,
+      "solution": "A half-filled (or fully-filled) set of degenerate orbitals has extra stability arising from higher exchange energy and a more symmetrical charge distribution. For Cr, the configuration 3d^5 4s^1 (two half-filled subshells) is more stable than 3d^4 4s^2, so it is the actual ground-state configuration."
+    },
+    {
+      "id": "chem-atom-039",
+      "topicId": "chem-atom-econfig",
+      "type": "mcq_multi",
+      "difficulty": "medium",
+      "expectedSeconds": 180,
+      "stem": "Which of the following ground-state electronic configurations are correctly written? (Select all that apply.)",
+      "options": [
+        "A. Cu (Z=29): [Ar]3d^10 4s^1",
+        "B. Fe (Z=26): [Ar]3d^6 4s^2",
+        "C. Mn (Z=25): [Ar]3d^5 4s^2",
+        "D. Zn (Z=30): [Ar]3d^9 4s^2"
+      ],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A: Cu has 29 electrons; [Ar]=18, remaining 11 electrons go as 3d^10 4s^1 (exception due to the extra stability of a fully-filled d subshell) - correct. B: Fe has 26 electrons; [Ar]3d^6 4s^2 (18+6+2=26) - correct, no exception for Fe. C: Mn has 25 electrons; [Ar]3d^5 4s^2 (18+5+2=25), a half-filled d subshell with a normal 4s^2 - correct. D: Zn has 30 electrons; the correct configuration is [Ar]3d^10 4s^2 (18+10+2=30), not 3d^9 4s^2 - incorrect as written."
+    },
+    {
+      "id": "chem-atom-040",
+      "topicId": "chem-atom-econfig",
+      "type": "mcq_multi",
+      "difficulty": "hard",
+      "expectedSeconds": 230,
+      "stem": "Which of the following statements about the Aufbau principle and orbital filling order are correct? (Select all that apply.)",
+      "options": [
+        "A. Orbitals are filled in order of increasing (n + l) value",
+        "B. When two orbitals have the same (n + l) value, the orbital with the lower value of n is filled first",
+        "C. The 4s orbital is filled before the 3d orbital because (n+l) for 4s equals 4, while for 3d it equals 5",
+        "D. In transition metal ions, electrons are always removed from the 3d orbital before the 4s orbital, exactly reversing the order in which they were filled"
+      ],
+      "correct": ["A", "B", "C"],
+      "tolerance": null,
+      "solution": "A and B correctly state the (n+l) rule used to sequence orbital filling. C correctly applies it: 4s (n+l = 4+0 = 4) is filled before 3d (n+l = 3+2 = 5). D is incorrect - although 4s fills before 3d while building up the atom, once the atom is formed, transition metal ions lose 4s electrons first (not 3d) upon ionisation; e.g., Fe → Fe2+ removes both 4s electrons before any 3d electron."
+    },
+    {
+      "id": "chem-atom-041",
+      "topicId": "chem-atom-econfig",
+      "type": "integer",
+      "difficulty": "easy",
+      "expectedSeconds": 150,
+      "stem": "How many unpaired electrons are present in the ground-state electronic configuration of a nitrogen atom (Z = 7)?",
+      "options": null,
+      "correct": 3,
+      "tolerance": null,
+      "solution": "N (Z=7): 1s^2 2s^2 2p^3. By Hund's rule, the three 2p electrons occupy the three degenerate 2p orbitals singly before any pairing, giving 3 unpaired electrons."
+    },
+    {
+      "id": "chem-atom-042",
+      "topicId": "chem-atom-econfig",
+      "type": "matching",
+      "difficulty": "hard",
+      "expectedSeconds": 240,
+      "stem": "Match the element in Column I with the number of unpaired electrons in its ground-state electronic configuration in Column II.\n\n**Column I**\nP. Chromium, Cr (Z=24): [Ar]3d^5 4s^1\nQ. Copper, Cu (Z=29): [Ar]3d^10 4s^1\nR. Iron, Fe (Z=26): [Ar]3d^6 4s^2\nS. Manganese, Mn (Z=25): [Ar]3d^5 4s^2\n\n**Column II**\n1. 1\n2. 4\n3. 5\n4. 6",
+      "options": null,
+      "correct": {"P": "4", "Q": "1", "R": "2", "S": "3"},
+      "tolerance": null,
+      "solution": "P (Cr, 3d^5 4s^1): all 5 d-electrons unpaired plus 1 unpaired s-electron = 6 unpaired → matches 4.\nQ (Cu, 3d^10 4s^1): d^10 fully paired (0 unpaired) plus 1 unpaired s-electron = 1 unpaired → matches 1.\nR (Fe, 3d^6 4s^2): d^6 in 5 degenerate orbitals - first 5 electrons fill singly, the 6th pairs with one → 4 unpaired; 4s^2 fully paired → total 4 unpaired → matches 2.\nS (Mn, 3d^5 4s^2): d^5 all unpaired (5) plus 4s^2 paired → total 5 unpaired → matches 3.\nHence P-4, Q-1, R-2, S-3."
+    }
+  ]
+}
