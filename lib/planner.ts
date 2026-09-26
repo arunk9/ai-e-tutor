@@ -111,6 +111,26 @@ export async function getOrCreateTodayPlan(userId: string) {
   return { studyDay, week };
 }
 
+/** Consecutive closed-out study days, most recent first, allowing today to still be open. */
+export async function getStreak(userId: string): Promise<number> {
+  const days = await prisma.studyDay.findMany({
+    where: { userId, closed: true },
+    orderBy: { date: "desc" },
+    take: 60,
+    select: { date: true },
+  });
+  if (days.length === 0) return 0;
+
+  let streak = 1;
+  for (let i = 1; i < days.length; i++) {
+    const prev = Date.parse(`${days[i - 1].date}T00:00:00Z`);
+    const cur = Date.parse(`${days[i].date}T00:00:00Z`);
+    if (Math.round((prev - cur) / 86_400_000) === 1) streak++;
+    else break;
+  }
+  return streak;
+}
+
 export async function closeStudyDay(userId: string, minutesStudied: number, topicsTouched: string[]) {
   const week = getWeekInfo(await prisma.user.findUniqueOrThrow({ where: { id: userId } }));
   return prisma.studyDay.update({

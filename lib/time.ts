@@ -34,3 +34,20 @@ export function daysSinceIST(start: Date, now: Date = new Date()): number {
   const nowUtc = Date.parse(`${nowDateStr}T00:00:00Z`);
   return Math.floor((nowUtc - startUtc) / (24 * 60 * 60 * 1000));
 }
+
+const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+/** Days from `from` to the next occurrence of `target` (0 if they're the same day). */
+export function daysUntilWeekday(target: string, from: string): number {
+  const t = WEEKDAYS.indexOf(target);
+  const f = WEEKDAYS.indexOf(from);
+  if (t === -1 || f === -1) return 0;
+  return (t - f + 7) % 7;
+}
+
+/** UTC instants for the start/end of an IST calendar day (India has no DST, so +05:30 is always safe). */
+export function getISTDayBoundsUTC(dateStr: string): { start: Date; end: Date } {
+  const start = new Date(`${dateStr}T00:00:00+05:30`);
+  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+  return { start, end };
+}
