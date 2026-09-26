@@ -20,7 +20,7 @@ export function PracticePanel({ topicId }: { topicId: string }) {
   const [grade, setGrade] = useState<GradeView | null>(null);
   const [hint, setHint] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [startedAt, setStartedAt] = useState<number>(Date.now());
+  const [startedAt, setStartedAt] = useState<number>(0); // real value is always set by startPractice()/handleNext() before it's read
 
   async function startPractice() {
     setLoading(true);

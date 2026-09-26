@@ -15,7 +15,12 @@ export function TestRunner({ paperId, items, totalSeconds }: { paperId: string; 
   const [remaining, setRemaining] = useState(totalSeconds);
   const [submitting, setSubmitting] = useState(false);
   const elapsedRef = useRef<Record<string, number>>({});
-  const activeSinceRef = useRef<number>(Date.now());
+  const activeSinceRef = useRef<number>(0); // set for real in the mount effect below
+  const remainingRef = useRef<number>(totalSeconds);
+
+  useEffect(() => {
+    activeSinceRef.current = Date.now();
+  }, []);
 
   const commitElapsed = useCallback(() => {
     const id = items[index].id;
@@ -25,10 +30,9 @@ export function TestRunner({ paperId, items, totalSeconds }: { paperId: string; 
   }, [index, items]);
 
   const handleSubmit = useCallback(async () => {
-    setSubmitting((already) => {
-      if (already) return already;
-      return true;
-    });
+    // submitPaper() is idempotent server-side (a second submit of the same paper is a no-op),
+    // so a race between the auto-submit timer and a manual click is harmless.
+    setSubmitting(true);
     commitElapsed();
     const timings = { ...elapsedRef.current };
     await fetch("/api/test", {
@@ -41,13 +45,16 @@ export function TestRunner({ paperId, items, totalSeconds }: { paperId: string; 
   }, [commitElapsed, paperId, answers, router]);
 
   useEffect(() => {
-    const timer = setInterval(() => setRemaining((r) => Math.max(0, r - 1)), 1000);
+    const timer = setInterval(() => {
+      remainingRef.current = Math.max(0, remainingRef.current - 1);
+      setRemaining(remainingRef.current);
+      if (remainingRef.current === 0) {
+        clearInterval(timer);
+        handleSubmit();
+      }
+    }, 1000);
     return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    if (remaining === 0 && !submitting) handleSubmit();
-  }, [remaining, submitting, handleSubmit]);
+  }, [handleSubmit]);
 
   function goTo(newIndex: number) {
     commitElapsed();
