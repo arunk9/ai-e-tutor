@@ -367,3 +367,68 @@ export async function submitPaper(paperId: string, answers: Record<string, Submi
     },
   });
 }
+
+/** Client-safe items for an in-progress paper: the stored shuffle permutation is applied, never re-rolled. */
+export function buildClientItemsForPaper(items: PaperItem[]): (ClientQuestion & { subject: Subject })[] {
+  return items.map((item) => {
+    const question = getQuestion(item.questionId);
+    if (!question) throw new Error(`Unknown questionId "${item.questionId}" in paper`);
+    return { ...sanitizeQuestion(question, item.optionOrder), subject: item.subject };
+  });
+}
+
+export interface PaperResultItem {
+  questionId: string;
+  subject: Subject;
+  topicId: string;
+  type: QuestionType;
+  stem: string;
+  correct: boolean;
+  patternMarks: number;
+  timeAwareMarks: number;
+  timeMs: number;
+  solution: string;
+}
+
+export interface PaperResults {
+  paperId: string;
+  pattern: "main" | "advanced";
+  weekNumber: number;
+  totalPatternMarks: number;
+  totalMaxMarks: number;
+  totalTimeAwareMarks: number;
+  items: PaperResultItem[];
+}
+
+/** Reconstructs a submitted paper's results from its Attempt rows (the source of truth for scores). */
+export async function getPaperResults(paperId: string): Promise<PaperResults | null> {
+  const paper = await prisma.paper.findUnique({ where: { id: paperId } });
+  if (!paper || paper.status !== "submitted") return null;
+
+  const attempts = await prisma.attempt.findMany({ where: { paperId }, orderBy: { createdAt: "asc" } });
+  const items: PaperResultItem[] = attempts.map((a) => {
+    const question = getQuestion(a.questionId);
+    return {
+      questionId: a.questionId,
+      subject: a.subject as Subject,
+      topicId: a.topicId,
+      type: a.type as QuestionType,
+      stem: question?.stem ?? "",
+      correct: a.correct,
+      patternMarks: a.patternMarks,
+      timeAwareMarks: a.timeAwareMarks,
+      timeMs: a.timeMs,
+      solution: question?.solution ?? "",
+    };
+  });
+
+  return {
+    paperId: paper.id,
+    pattern: paper.pattern as "main" | "advanced",
+    weekNumber: paper.weekNumber,
+    totalPatternMarks: paper.totalPatternMarks ?? 0,
+    totalMaxMarks: paper.totalMaxMarks ?? 0,
+    totalTimeAwareMarks: paper.totalTimeAwareMarks ?? 0,
+    items,
+  };
+}
